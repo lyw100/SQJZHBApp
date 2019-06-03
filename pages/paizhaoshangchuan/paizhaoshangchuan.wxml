@@ -1,0 +1,18 @@
+<!--拍照上传页面-->
+<view class='pzsc'>
+
+    <view class='wenben'>
+      <input  placeholder="请输入标题..." bindinput='inputBind'></input>
+       <textarea placeholder="请输入文本报告..." adjust-position="false" bindinput='inputContentBind'/>
+    </view>
+    <view class='xztupian'>
+      <view class='tupianview' wx:for='{{imgList}}' wx:key='{{index}}' wx:for-item='img' data-index='{{index}}' bindlongpress='deleteImg'>
+        <image src='{{img}}' class='tupian' bindtap='imgPreview' data-src='{{img}}' data-list='{{imgList}}'></image>
+      </view>
+      <!-- <image src='/img/yiyuan.png' class='tupian'></image>
+      <image src='/img/yiyuan.png' class='tupian'></image>
+      <image src='/img/yiyuan.png' class='tupian'></image> -->
+      <image src='/img/tianjian.png' class='tupian' catchtap='dianji'></image>
+    </view>
+    <view class='fabiao' bindtap='fabiao'><text>提交</text></view>
+</view>

@@ -1,0 +1,13 @@
+// 判断字符串是否包含某个字符
+var indexOfTF = function(pStr, childStr){
+  if (pStr == undefined){
+    return false
+  }
+  if (pStr.indexOf(childStr) == -1){
+    return false
+  }else{
+    return true
+  }
+  return false
+}
+module.exports.indexOfTF = indexOfTF

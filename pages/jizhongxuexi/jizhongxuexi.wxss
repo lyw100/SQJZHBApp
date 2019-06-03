@@ -1,0 +1,150 @@
+.ywld {
+  width: 100%;
+  height: auto;
+}
+
+.xiala_qb {
+  width: 400rpx;
+  height: 80rpx;
+  border: 1px solid #ececec;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 34rpx;
+  color: #2499f9;
+  position: relative;
+  box-shadow: 0px 0px 5px #e5e5e5;
+  -moz-box-shadow: 0px 0px 8px #e5e5e5;
+  border-radius: 15rpx;
+}
+
+.xiala_dw {
+  width: 400rpx;
+  font-size: 34rpx;
+  color: #aeb3b7;
+  border: 1px solid #ececec;
+  box-shadow: 0px 0px 8px #e5e5e5;
+  -moz-box-shadow: 0px 0px 8px #e5e5e5;
+  position: absolute;
+  top: 80rpx;
+  left: 23.2%;
+  background: #fff;
+  border-bottom-left-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+}
+
+.xiajiantou {
+  width: 30rpx;
+  height: 16rpx;
+  position: absolute;
+  top: 35rpx;
+  right: 20rpx;
+}
+
+.xiala_dw text {
+  display: block;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-top: 1px solid #f5f5f5;
+}
+
+.ywld_wode {
+  width: 100%;
+}
+
+.ywld_nr {
+  width: 100%;
+  height: auto;
+}
+
+.ywld_nr:last-child {
+  margin-bottom: 10rpx;
+}
+
+.nr_kuai {
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx;
+  border-bottom: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+
+.nr_tit {
+  font-size: 32rpx;
+  color: #2f2f2f;
+  font-weight: bold;
+}
+
+.nr_dwwz {
+  font-size: 32rpx;
+  color: #ababab;
+  margin-top: 15rpx;
+}
+
+.nr_dwtb {
+  width: 27rpx;
+  height: 33rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
+.nr_footer {
+  margin-right: 10rpx;
+  font-size: 28rpx;
+  margin-top: 15rpx;
+  text-align: right;
+}
+
+.shenhetongguo {
+  padding: 2rpx 15rpx;
+  background: #f3f3f3;
+  color: #2499f9;
+}
+
+.yijiehshu {
+  padding: 2rpx 15rpx;
+  background: #f3f3f3;
+  color: #646668;
+}
+
+.wks {
+  padding: 2rpx 15rpx;
+  background: #f3f3f3;
+  color: #6ecd29;
+}
+
+
+.dibu{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #7f7d8a;
+}
+.dibu_img{
+   width: 40rpx;
+   height: 40rpx;
+   margin-right: 10px;
+   animation: weuiLoading 0.6s steps(12, end) infinite;
+   vertical-align:middle;
+}
+@keyframes weuiLoading {
+   0% {
+     transform: rotate3d(0, 0, 1, 0deg);
+   }
+  50% {
+     transform: rotate3d(0, 0, 1, 180deg);
+   }
+   100% {
+     transform: rotate3d(0, 0, 1, 360deg);
+   }
+ }
+
+.nr_zwnr{
+  margin-left: 40rpx;
+  font-size:32rpx;
+
+}

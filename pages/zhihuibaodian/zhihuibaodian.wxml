@@ -1,0 +1,130 @@
+<!--智慧宝典页面 -->
+<view class='kck'>
+    <view class='tit'>
+      <text class='{{flfgtit}}' catchtap='falcfg'>法律法规</text>
+      <text class='{{xljttit}}' catchtap='xinljt'>心灵鸡汤</text>
+      <text class='{{shbztit}}' catchtap='shenghbz'>生活帮助</text>
+    </view>
+    <!--法律法规页面 -->
+    <view class='flfg' wx:if='{{falvfagui}}'>
+      <view class='redain'>
+        <text>热点</text>
+        <image class='flfg_img' src='/img/redian.png'></image>
+      </view>
+      <view wx:for="{{list}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+        <view class='flfg_nr' catchtap='tzxinwenye' wx:if="{{item.isTop ==1}}" data-index="{{item.id}}">
+          <text>{{item.title}}</text>
+          <view class='zhidingsz'>
+            <text class='zd'>置顶</text>
+            <text>{{item.source}}</text>
+          </view>
+        </view>
+        <view class='flfg_xinxi' catchtap='tzxinwenye' wx:elif="{{item.isTop ==0}}" data-index="{{item.id}}">
+          <text class='xx_tm'>{{item.title}}</text>
+          <text class='flfg_riqi'>{{item.audittime}}</text>
+        </view>
+      </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+
+
+    </view>
+      
+      
+
+   
+
+    <!-- 心灵鸡汤-->
+    <view class='xljt' wx:if="{{xinlingjitang}}">
+      <view wx:for="{{list}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+       <view class='xljt_tit' catchtap='tzxinwenye' wx:if="{{item.isTop ==1}}" data-index="{{item.id}}">
+          <view class='xljt_tt'>
+            <text class='xljt_bt'>{{item.title}}</text>
+          </view>
+          <block wx:if="{{item.attachment.length == 3}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[1].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[2].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <block wx:elif="{{item.attachment.length == 2}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[1].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <block wx:elif="{{item.attachment.length == 1}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <view  class='zhidingsz'>
+              <text class='zd'>置顶</text>
+              <text class='ztsz_tit'>{{item.source}}</text>
+              <text class='xiaoshi'> {{item.audittime}}</text>
+            </view>
+        </view>
+        <view class='xljt_tit' catchtap='tzxinwenye' wx:elif="{{item.isTop ==0}}" data-index="{{item.id}}">
+         <view class='xljt_left'>
+            <text class='xljt_bt'>{{item.title}}</text>
+            <view  class='zhidingsz zhidingjianju'>
+              <text class='zdsz_sft'>{{item.source}}</text>
+              <text class='xiaoshi'>{{item.audittime}}</text>
+            </view>
+          </view>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_img'></image>
+        </view>
+      </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+    </view>
+    <!--心灵鸡汤 完-->
+
+    <!--生活帮助-->
+     <view class='shbz' wx:if="{{shenghuobangzhu}}">
+      <view wx:for="{{list}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+        <view class='xljt_tit' catchtap='tzxinwenye' wx:if="{{item.isTop ==1}}" data-index="{{item.id}}">
+          <view class='xljt_tt'>
+            <text class='xljt_bt'>{{item.title}}</text>
+          </view>
+          <block wx:if="{{item.attachment.length == 3}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[1].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[2].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <block wx:elif="{{item.attachment.length == 2}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[1].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <block wx:elif="{{item.attachment.length == 1}}">
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_tupian'></image>
+          </block>
+          <view  class='zhidingsz'>
+              <text class='zd'>置顶</text>
+              <text class='ztsz_tit'>{{item.source}}</text>
+              <text class='xiaoshi'>{{item.audittime}}</text>
+            </view>
+        </view>
+         <view class='xljt_tit' catchtap='tzxinwenye' wx:elif="{{item.isTop ==0}}" data-index="{{item.id}}">
+          <view class='xljt_left'>
+            <text class='xljt_bt'>{{item.title}}</text>
+            <view  class='zhidingsz zhidingjianju'>
+              <text class='zdsz_sft'>{{item.source}}</text>
+              <text class='xiaoshi'>{{item.audittime}}</text>
+            </view>
+          </view>
+          <image src='{{item.attachment[0].fileUrl}}' class='xljt_img'></image>
+         </view>
+      </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+    </view>    
+    <!--生活帮助 完-->
+  </view>

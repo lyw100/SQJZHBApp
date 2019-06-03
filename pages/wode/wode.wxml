@@ -1,0 +1,276 @@
+<view class='wode'>
+  <view class='wd_tit'>
+    <image class='wd_img' src='{{jzry.photo}}' catchtap='lianjie'></image>
+    <view class='tit_sm'>
+      <view class='wd_name'>
+        <text>{{jzry.name}}</text>
+        <text>{{jzry.sex==''?'':(jzry.sex==0?'女':'男')}}</text>
+        <text>{{jzry.age==0?'':jzry.age}}</text>
+      </view>
+      <view class='tit_dizhi'>
+        <text>{{jzry.jzdwName}}</text>
+      </view>
+      <view class='tit_guiding'>
+        <text>学习时长:{{hours}}</text>
+        <!-- <text>劳动时长:{{labor_hours}}</text> -->
+      </view>
+    </view>
+    <!-- <image class='wd_jiandao' src='/img/qiandao.png' catchtap='qiandao' wx:if="{{qiandaoxs}}"></image>
+    <image class='wd_jiandao' src='/img/yiqiandao.png' wx:if="{{yiqiandaoxs}}"></image> -->
+  </view>
+
+  <view class='wode_nr'>
+    <view class='nr_mokuan'>
+      <image src='/img/kcxxwx.png' class='kcwxz' wx:if="{{kechxz_wxz}}" catchtap='kechengxuexi'></image>
+      <image src='/img/kcxx.png' class='kcwxz' wx:if="{{kechxz_xz}}"></image>
+    </view>
+    <view class='nr_mokuan'>
+      <image src='/img/zxkswx.png' class='kcwxz' wx:if="{{zaixks_wxz}}" catchtap='zaixiankaoshi'></image>
+      <image src='/img/zxksxz.png' class='kcwxz' wx:if="{{zaixks_xz}}"></image>
+    </view>
+    <!-- <view class='nr_mokuan'>
+      <image src='/img/sxhbwx.png' class='kcwxz' wx:if="{{sixhb_wxz}}" catchtap='sixianghuibao'></image>
+      <image src='/img/sxhbxz.png' class='kcwxz' wx:if="{{sixhb_xz}}"></image>
+    </view> -->
+    <view class='nr_mokuan'>
+      <image src='/img/xlpgwx.png' class='kcwxz' wx:if="{{xinlpg_wxz}}" catchtap='xinlipiggu'></image>
+      <image src='/img/xlpgxz.png' class='kcwxz' wx:if="{{xinlpg_xz}}"></image>
+    </view>
+   <view class='nr_mokuan' catchtap='jizhongxuexi'>
+      <image src='/img/jizhongxuexi.png' class='kcwxz'></image>
+    </view>
+    <!-- <view class='nr_mokuan' catchtap='wode_ywld'>
+      <image src='/img/yiwulaodong.png' class='kcwxz'></image>
+    </view> -->
+    <view class='nr_mokuan' catchtap='wodeshoucangtp'>
+      <image src='/img/wodeshoucang.png' class='kcwxz' wx:if='{{wdsc_hui}}'></image>
+      <image src='/img/wodeshoucangxz.png' class='kcwxz' wx:if='{{wdsc_lan}}'></image>
+    </view>
+    <!-- <view class='nr_mokuan' catchtap='wodeqiandao'>
+      <image src='/img/wodeqiandao.png' class='kcwxz'></image>
+    </view> -->
+  </view>
+  <view class='sekuan'></view>
+
+  <!--课程学习页面-->
+  <view class='kecxx' wx:if="{{kechengxuexixs}}">
+    <view class='dukc_tiaoshi'>
+      <text>当月课程</text>
+    </view>
+
+    <view class="dykcsp">
+      <view class='left' wx:for="{{nowList}}" wx:key="index" wx:for-item="sign" wx:for-index="index">
+        <image data-courseid="{{sign.course.id}}" class='dykctupian' data-index='{{index}}' catchtap='coursePlay' src='{{sign.course.thumbnail}}'></image>
+        <!-- <image class='dykctupian' data-index='{{index}}' src='/img/yiyuan.png'></image> -->
+        <text data-index='{{index}}' class="shuoming">{{sign.course.name}}</text>
+        <view class='xssjxs_jj'>
+          <text data-index='{{index}}' class="shijian">{{sign.courseTime}}</text>
+          <text data-index='{{index}}' class="xueshi">学时:{{sign.course.hours}}</text>
+          <text class='xssj_zdkc' wx:if="{{sign.isAssign==1}}">指定课程</text>
+          <text data-courseid="{{sign.course.id}}"  data-index="{{index}}"  class='xssj_qxxk' catchtap='cancleSign' wx:if="{{sign.isAssign!=1&&sign.progress==0}}">取消选课</text>
+        </view>
+
+
+        <text data-index='{{index}}' class='xuexijindu'>学习进度</text>
+        <progress data-index='{{index}}' percent="{{sign.courseProgress}}" show-info color="#2499f9" stroke-width="3" />
+      </view>
+    </view>
+
+    <view class='dukc_tiaoshi'>
+      <text>历史课程</text>
+    </view>
+    <view class="dykcsp">
+      <view class='left' wx:for="{{historyList}}" wx:key="index" wx:for-item="sign" wx:for-index="index">
+        <image catchtap='coursePlay'  data-id="{{sign.id}}"  data-courseid="{{sign.course.id}}" class='dykctupian' data-index='{{index}}' src='{{sign.course.thumbnail}}'></image>
+        <!-- <image class='lskcimg' data-index='{{index}}' src='/img/yiyuan.png'></image> -->
+        <text class='shuoming'>{{sign.course.name}}</text>
+        <text class='shijian' style='float:right;margin:10rpx 15rpx; 15rpx'>{{sign.state==1?'已完成':'未完成'}}</text>
+
+      </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+    </view>
+  </view>
+  <!--课程学习页面完-->
+
+  <!--在线考试页面-->
+  <view class='zcks' wx:if='{{zaixiankaoshixs}}'>
+    <view class='zcks_biaoti'>
+      <text>新增考试</text>
+    </view>
+    <block wx:if='{{xzkslen>0}}'>
+      <view wx:for='{{xzkslist}}' wx:key='id' wx:for-index='idx' wx:for-item='item'>
+        <view class='zcks_xzks' catchtap='tzzkhsxqym' data-tpid='{{item.id}}' data-type='0'>
+          <view>
+            <text class='zcks_new'>NEW</text>
+            <text class='zcks_ksbt'>{{item.title}}</text>
+            <image class='bianji' src='/img/kaoshi.png'></image>
+          </view>
+          <view class='zcks_zongfen'>
+            <text>总分:{{item.totalScore}}</text>
+            <text>时长:{{item.minutes}}分钟</text>
+            <text>考试时间:{{item.startTime+"至"+item.endTime}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if='{{xzkslen<=0}}'>
+      <text class="zcks_zwks">暂无新增考试</text>
+    </block>
+    <view class='zcks_biaoti'>
+      <text>历史考试</text>
+    </view>
+    <block wx:if='{{lskslen>0}}'>
+      <view wx:for='{{lskslist}}' wx:key='id' wx:for-index='idx' wx:for-item='item'>
+        <view class='zcks_xzks' catchtap='tzzkhsxqym' data-tpid='{{item.id}}' data-type='1'>
+          <view>
+            <text class='zcks_ksbt'>{{item.title}}</text>
+            <text class='chankan'>查看</text>
+          </view>
+          <view class='zcks_zongfen'>
+            <text>总分:{{item.totalScore}}</text>
+            <text>时长:{{item.minutes}}分钟</text>
+            <text>考试时间:{{item.startTime+"至"+item.endTime}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if='{{lskslen<=0}}'>
+      <text class="zcks_zwks">暂无历史考试</text>
+    </block>
+  </view>
+  <!--在线考试页面 完-->
+
+  <!--思想汇报页面 -->
+  <view class='sxhb' wx:if="{{sixianghbxianshi}}">
+    <!-- <view class='dukc_tiaoshi' catchtap='tzpaizhaoyemian'>
+      <text>拍照汇报</text>
+    </view>
+    <image src='/img/paizhao.png' class='sxhb_pz' catchtap='dianji'></image> -->
+    <view class="sxhb_xzhb" catchtap='tzpaizhaoyemian'>新增汇报</view>
+    <view class='xiantiao'></view>
+    <view class='dukc_tiaoshi'>
+      <text>思想汇报记录</text>
+    </view>
+    <view class='sxhbjl_zong'>
+      <view class='sxhbjl_fst' wx:for='{{reportList}}' wx:key='{{index}}'>
+        <view class='sxhb_biaoti'>
+          <text style='font-weight:bold;'>{{item.title}}</text>
+          <text class='weishenhe' wx:if='{{item.state=="0"}}'>未审核</text>
+          <text class='yishenhe' wx:if='{{item.state=="1"}}'>已审核</text>
+        </view>
+        <view class='sxhb_shuoming' wx:if='{{item.content.length>0}}'>
+          <text class="{{item.isFold?'sxhb_jianjie':'sxhb_show'}}">{{item.content}}</text>
+          <text data-index='{{index}}' class='sxhb_zh' wx:if='{{item.isFold}}' catchtap='sxhb_zhankai'>展开</text>
+          <text data-index='{{index}}' class='sxhb_zh' wx:if='{{!item.isFold}}' catchtap='sxhb_zhankai'>收起</text>
+        </view>
+        <view class='sxhb_img'>
+          <view wx:for='{{item.images}}' wx:for-item='image' wx:key='id' style='display:inline-block'>
+            <image src='{{image}}' class='img_xuantu' bindtap='imgPreview' data-list='{{item.images}}' data-src='{{image}}'></image>
+          </view>
+          <!-- <image src='/img/ceshi.jpg' class='img_xuantu'></image>
+            <image src='/img/ceshi.jpg' class='img_xuantu'></image>
+            <image src='/img/ceshi.jpg' class='img_xuantu'></image> -->
+        </view>
+        <view class='sxhb_hbsj' wx:if='{{item.state=="0"}}'>
+          <text>汇报时间:{{item.reporttime}}</text>
+        </view>
+        <view class='sxhb_hbsj' wx:if='{{item.state=="1"}}'>
+          <text>审核人:{{item.auditor}}</text>
+          <text class='sxhb_shsj'>审核时间:{{item.audittime}}</text>
+        </view>
+      </view>    
+    </view>
+  </view>
+  <!--思想汇报页面 完-->
+
+  <!--心理评估页面-->
+  <view class='xlpg' wx:if="{{xinlipgxianshi}}">
+    <view class='bianxian'>
+      <view class='xlpg_kscs' catchtap='tzxinlipinggu'>
+        <text>开始测试</text>
+      </view>
+    </view>
+    <view class='zcks_biaoti'>
+      <text>历史评估</text>
+    </view>
+    <block wx:if='{{xlpglen>0}}'>
+      <view wx:for="{{psyReportList}}" wx:for-item="map" wx:for-index="index" wx:key="index">
+        <view class='zcks_xzks'>
+          <view>
+            <text class='zcks_ksbt'>90项症状清单(SCL-90)</text>
+            <text data-psyreportid="{{map.id}}" class='chakan' catchtap='tzceshijieguo'>查看</text>
+          </view>
+          <view class='zcks_zongfen'>
+            <text>测评时间:{{map.createtime}}</text>
+            <text>结果:<text class='yinxing'>{{map.assess == "0"? "阴性":"阳性"}}</text></text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if='{{xlpglen<=0}}'>
+      <text class="zcks_zwks">暂无历史评估</text>
+    </block>
+  </view>
+  <!--心理评估页面 完-->
+  <!-- 我的收藏页面 -->
+    <view  wx:if="{{wodeshoucangmk}}">
+        <view class="dykcsp">
+           <block wx:for="{{courseList}}" wx:key="index" wx:for-item="course" wx:for-index="index"> 
+            <view class='left' >
+              <image data-id="{{course.id}}" class='dykctupian' data-index='{{index}}' catchtap='bofang' src='{{course.thumbnail}}'></image>
+
+              <text class="shuoming">{{course.name}}</text>
+              <view class="xsshijian">
+                <text class="shijian">{{course.courseTime}}</text>
+                <text class="xueshi" >学时:{{course.hours}}</text>
+
+                <view class='xukefangdaweizhi' data-id="{{course.id}}" data-index="{{index}}" catchtap='cancleCourse' wx:if='{{course.isSign==1}}'>
+                    <image class='xuketupian' src='/img/yixuanke.png'></image>
+                  </view>
+                  <view class='xukefangdaweizhi' data-id="{{course.id}}" data-index="{{index}}" catchtap='chooseCourse' wx:if='{{course.isSign==0}}'>
+                    <image class='xuketupian' src='/img/xuanke.png'></image>
+                  </view>
+
+              </view>
+
+               <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+
+              <!--未选课-->
+              <view class='lfph_dw' catchtap='bofang' data-id="{{course.id}}" data-index='{{index}}' wx:if="{{course.isSign==0}}">
+                <view class='dwlfph_jianju'>
+                  <text class='kck_weixuanke'>未选课</text>
+                  <text>不记学时</text>
+                </view> 
+                
+               
+              </view>
+              <!--已选课-->
+              <view wx:if="{{course.isSign==1}}">
+                <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+              </view>
+            </view>
+         </block> 
+         <view class='dibu' wx:if='{{dibu}}'>
+              <image src='/img/jiazai.png' class="dibu_img"></image>
+              <text>火速加载中...</text>
+            </view>
+          <view style='clear:both;'></view>
+        </view>
+    </view>
+  <!-- 我的收藏页面 完 -->
+</view>

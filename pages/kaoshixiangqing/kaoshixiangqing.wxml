@@ -1,0 +1,92 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<wxs src="../../wxs/indexOfUtil.wxs" module="tools"/>
+<view class="ksxq" wx:if="{{ksxq_timu}}">
+  <view class='tit'>
+    <text class='timu' wx:if="{{sequence>=1 && sequence<=tfngNum}}">判断题</text>
+    <text class='timu' wx:if="{{sequence>tfngNum && sequence<=(tfngNum+singleNum)}}">单选题</text>
+    <text class='timu' wx:if="{{sequence>(tfngNum+singleNum) && (tfngNum+singleNum)<=qcount}}">多选题</text>
+    <text class='djt'><text class='dqs'>{{sequence}}</text>/{{qcount}}</text>
+  </view>
+  <view class='center'>
+    <swiper current="{{curIndex}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" class='spr' bindchange="changeQuestion">
+      <block wx:for="{{pQuestionArr}}" wx:key="qid" wx:for-item="item" wx:for-index="qid">
+        <swiper-item class="spr_gd">
+          <view class='fst'>
+            <!-- 题目 -->
+            <view class='kaoti'>{{qid+1+'.'+item.question.content}}</view>
+            <!-- 图片 -->
+            <view wx:if='{{item.question.img}}'>
+              <block wx:for='{{item.question.img}}' wx:key='imgid' wx:for-item='imgsrc'>
+                <image class='wxParse-img' src='{{imgsrc}}'></image>
+              </block>
+            </view>
+            <!-- 单选题选项 -->
+            <view class='daan' wx:if="{{item.question.type==0}}">
+              <block wx:for="{{item.question.xuanxiangArr}}" wx:key="xxid" wx:for-item="itemsub">
+                <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='{{itemsub.key}}'>
+                  <text class='xuanxiang {{item.hasChoose==itemsub.key?"xzyanse":""}}'>{{itemsub.key}}</text>
+                  <text class='daan_xiangjie'>{{itemsub.value}}</text>
+                </view>
+              </block>
+            </view>
+            <!-- 多选题选项 -->
+            <view class='daan' wx:if="{{item.question.type==1}}">
+              <block wx:for="{{item.question.xuanxiangArr}}" wx:key="xxid" wx:for-item="itemsub">
+                <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='{{itemsub.key}}'>
+                  <text class='xuanxiang {{tools.indexOfTF(item.hasChoose,itemsub.key)?"xzyanse":""}}'>{{itemsub.key}}</text>
+                  <text class='daan_xiangjie'>{{itemsub.value}}</text>
+                </view>
+              </block>
+            </view>
+            <!-- 判断题选项 -->
+            <view class='daan' wx:if="{{item.question.type==2}}">
+              <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='A'>
+                <text class='xuanxiang {{item.hasChoose=="1"?"xzyanse":""}}'>A</text>
+                <text class='daan_xiangjie'>正确</text>
+              </view>
+              <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='B'>
+                <text class='xuanxiang {{item.hasChoose=="0"?"xzyanse":""}}'>B</text>
+                <text class='daan_xiangjie'>错误</text>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 答题卡、时间按钮 -->
+  <view class='footer'>
+    <block wx:if='{{type=="0"}}'>
+      <view class='dtk_sz' catchtap='datika_dj'>
+        <image src='/img/datika.png' class='dtk_img'></image>
+      </view>
+      <view class='shijian_dumiao'>
+        <image src='/img/shijian.png' class='shijiant'></image>
+        <text class='shijian'>{{wxTimer}}</text>
+      </view>
+    </block>
+    <block wx:if='{{type=="1"}}'>
+      <view class='dtkonly_img' catchtap='datika_dj'>
+        <image src='/img/datika.png' class='dtk_img'></image>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!--答题卡页面-->
+<view class='dtk' wx:if="{{ksxq_datk}}">
+  <view class='dtk_tit'>
+    <text>答题卡</text>
+  </view>
+  <view class='dtk_center'>
+    <block wx:for="{{pQuestionArr}}" wx:key="qid" wx:for-item="item" wx:for-index="qid">
+      <text class='{{item.hasChoose!=""?"dtk_yanse":""}}' catchtap='fhdtk_dt' data-index='{{qid}}'>{{qid+1}}</text>
+    </block>
+  </view>
+  <view wx:if='{{type=="0"}}' class='dtk_ft dtk_color' catchtap='jiaojjieguo'  data-index='{{qid}}'>
+    <text>交卷并查看结果</text>
+  </view>
+  <view wx:if='{{type=="1"}}' class='dtk_ft dtk_color' catchtap='ckjieguo'  data-index='{{qid}}'>
+    <text>查看结果</text>
+  </view>
+</view>

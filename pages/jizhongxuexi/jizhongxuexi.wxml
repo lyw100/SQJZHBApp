@@ -1,0 +1,47 @@
+<view class="ywld">
+  <view class='ywld_xiala'>
+    <view class='xiala_qb' catchtap='quanbudj'>
+      <text>{{statusStr}}</text>
+      <image src='/img/xialajiantou.png' class='xiajiantou'></image>
+    </view>
+
+    <view class='xiala_dw' wx:if='{{xiala_dwyc}}'>
+      <text  data-status='' class='{{status==""?"xiala_qb":""}}' catchtap='learnStatus'>全部</text>
+      <text data-status='0' class='{{status=="0"?"xiala_qb":""}}' catchtap='learnStatus'>未开始</text>
+      <text data-status='1' class='{{status=="1"?"xiala_qb":""}}' catchtap='learnStatus'>学习中</text>
+      <text data-status='2' class='{{status=="2"?"xiala_qb":""}}' catchtap='learnStatus'>已结束</text>
+    </view>
+  </view>
+  <view class='ywld_wode'>
+
+    <view class='ywld_nr'  wx:for="{{learnItems}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+      <view class='nr_kuai' data-id='{{item.id}}' catchtap='shenhezhong'>
+        <view class='nr_tit'>
+          <text>{{item.learn.content}}</text>
+        </view>
+        <view class='nr_dwwz'>
+          <image src='/img/dingwei.png' class='nr_dwtb'></image>
+          <text style='vertical-align:middle;'>{{item.learn.address}}</text>
+        </view>
+        <view class='nr_dwwz'>
+          <text>活动时间 : {{item.learn.startTime}} 至 {{item.learn.endTime}}</text>
+        </view>
+        <view class='nr_footer'>
+          <text wx:if='{{item.status==0}}' class='wks'>未开始</text>
+            <text wx:if='{{item.status==1}}'  class='shenhetongguo'>学习中</text>
+            <text wx:if='{{item.status==2}}'  class='yijiehshu'>已结束</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='nr_zwnr' wx:if='{{learnItems.length==0}}'>
+      <text>暂无学习内容</text>
+    </view>
+    
+    <view class='dibu' wx:if='{{dibu}}'>
+      <image src='/img/jiazai.png' class="dibu_img"></image>
+      <text>火速加载中...</text>
+    </view>
+    
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!--shouye.wxml catchtap="takePhoto"-->
+<view class='nr'>
+<camera device-position="{{device?'back':'front'}}" flash="off" binderror="error" style="width: 500rpx; height: 500rpx;">
+  <cover-image style="" class="lefttop" src="{{imgurl}}" />
+</camera> 
+<view class="anniu">
+       <text>{{msgData}}</text>
+   </view>
+</view>

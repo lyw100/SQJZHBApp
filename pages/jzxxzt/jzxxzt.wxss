@@ -1,0 +1,131 @@
+page {
+  padding-bottom: 50rpx;
+}
+
+.shz {
+  width: 100%;
+  height: auto;
+}
+
+.shz_nr {
+  height: auto;
+  background: #fff;
+  padding: 0 40rpx;
+}
+
+.shz_dz {
+  height: 300rpx;
+  font-size: 34rpx;
+  padding-top: 15rpx;
+  overflow-y: auto;
+}
+
+.sh_timt {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sh_timt:last-child, .xxz_k:last-child {
+  border-bottom: none;
+}
+
+.time_riqi {
+  display: inline-block;
+  width: 67%;
+  text-align: right;
+  color: #7d7d7d;
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.xuexizhong {
+  padding: 0 40rpx;
+}
+
+.qiantuimk {
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1px solid #e5e5e5;
+}
+
+.zhanse {
+  height: 30rpx;
+  background: #f6f6f6;
+}
+
+.xxz_k {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.xxz_zp {
+  font-size: 34rpx;
+  margin: 13px 0;
+}
+
+.xxz_photo {
+  width: 200rpx;
+  height: 200rpx;
+  float: right;
+}
+
+.anniu {
+  width: 85%;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 150rpx auto 0rpx;
+  background: #c9c9c9;
+  text-align: center;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 34rpx;
+}
+
+.anniu2 {
+  width: 85%;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 150rpx auto 0rpx;
+  background: #2499f9;
+  text-align: center;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 34rpx;
+}
+
+/* 刷脸登录 */
+
+.nr {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 999999999;
+  height: 100%;
+  overflow: hidden;
+}
+
+.shebieziti {
+  width: 85%;
+  text-align: center;
+  font-size: 40rpx;
+  padding-top: 50rpx;
+  color: #2499f9;
+}
+
+.lefttop {
+  width: 502rpx;
+  height: 502rpx;
+}

@@ -1,0 +1,26 @@
+<view class="nr">
+  <view wx:for="{{xxlist}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+    <view class='xtxx' catchtap='tzxwxxinfo' data-index="{{item.id}}">
+      <view class='shijian'>
+        <text>{{item.audittime}}</text>
+      </view>
+      <view class='neirong'>
+        <view class='nr_biaoti'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='nr_jianjie'>
+          <text>{{item.content}}</text>
+        </view>
+        <view class='ribaotime'>
+          <text>{{item.source}}</text>
+          <text class='{{item.channelname}}'>已读</text>
+          <view style='clear:both'></view>
+        </view>
+        <view class='chakanxq'>
+          <text>查看详情</text>
+          <image src='/img/shengfenjiantou.png' class='jiantou'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

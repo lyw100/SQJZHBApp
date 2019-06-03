@@ -1,0 +1,96 @@
+page {
+  width: 100%;
+  background: #f2f2f2;
+}
+
+.ssy {
+  width: 100%;
+  height: auto;
+}
+
+.sskuang {
+  box-sizing: border-box;
+  width: 100%;
+  height: 90rpx;
+  padding-bottom: 20rpx;
+  position: fixed;
+  top: 0;
+  background: #f2f2f2;
+  z-index: 999;
+}
+
+.ssk_nr {
+  display: inline-block;
+  width: 75%;
+  height: 100%;
+  background: #fff;
+  margin-left: 30rpx;
+  padding: 0 20rpx;
+  border: 1px solid #e5e5e5;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.ss_icon {
+  width: 39rpx;
+  height: 41rpx;
+  vertical-align: middle;
+}
+
+.ssk_nr input {
+  display: inline-block;
+  width: 91%;
+  height: 100%;
+  padding-left: 10rpx;
+  vertical-align: middle;
+}
+
+.quxiao {
+  margin-left: 15rpx;
+}
+
+.chahao_icon {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 15rpx;
+  right: 10rpx;
+}
+
+.sousuo_nr {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 90rpx;
+}
+
+.ss_dz {
+  padding: 20rpx 40rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.dizhi {
+  width: 36rpx;
+  height: 48rpx;
+}
+
+.dz_nr {
+  width: 91%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20rpx;
+}
+
+.dz_tit {
+  font-size: 36rpx;
+}
+
+.dz_color {
+  color: #2499f9;
+}
+
+.dz_xx {
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  color: #b4b4b4;
+}

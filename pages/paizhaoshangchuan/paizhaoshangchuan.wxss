@@ -1,0 +1,53 @@
+/* pages/paizhaoshangchuan/paizhaoshangchuan.wxss */
+pzsc{
+  width: 100%;
+  height: auto;
+}
+.wenben{
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.wenben input{
+  width: 84%;
+  margin: 0 auto 15rpx;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  height:70rpx;
+}
+textarea{
+height:150rpx;
+width:84%;
+padding:20rpx;
+margin:0 auto;
+
+}
+.xztupian{
+  width: 84%;
+  height: auto;
+  padding: 20rpx 30rpx;
+  margin: 0 auto;
+}
+.tupianview{
+  display: inline-block;
+}
+.tupian{
+  width: 196rpx;
+  height: 196rpx;
+  margin-right: 15rpx;
+  margin-bottom: 20rpx;
+}
+.tupian:nth-child(3n){
+   margin-right: 0rpx;
+}
+.fabiao{
+  width: 85%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #2499f9;
+  color: #fff;
+  margin: 50rpx auto 0;
+  text-align: center; 
+  border-radius: 40rpx;
+
+
+}

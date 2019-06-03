@@ -1,0 +1,273 @@
+page {
+  height: auto;
+}
+
+.contai {
+  height: 100%;
+}
+
+.tit {
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 99;
+  width: 100%;
+  height: 80rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.sousuo {
+  width: 650rpx;
+  height: 60rpx;
+  vertical-align: middle;
+  
+}
+
+.sis {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 20rpx;
+  vertical-align: middle;
+}
+.xinxi_dwfl{
+  display: inline-block;
+  position: relative;
+  margin-left: 20rpx;
+}
+.xinzi_shuzi{
+/* padding:0rpx 10rpx; */
+background:red;
+color:#fff;
+font-size:20rpx;
+position:absolute;
+top:0;
+right:-20rpx;
+border-radius:20rpx;
+display:inline-block;
+min-width: 35rpx;
+text-align: center;
+height:35rpx;
+line-height:35rpx;
+}
+.jiujiujia{
+  position:absolute;
+  top:0;
+  right:-40rpx;
+  padding:0 10rpx;
+
+}
+.xinxi {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.titimg {
+  width: 100%;
+  height: 420rpx;
+  position: relative;
+  top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.titimg .biaotou {
+  width: 100%;
+  height: 420rpx;
+}
+
+.swiper {
+  height: 100%;
+}
+
+.dingwei {
+  position: absolute;
+  top: 0;
+}
+
+.titxinxi {
+  position: absolute;
+  left: 20rpx;
+  bottom: 20rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.dukc_tiaoshi {
+  margin-top: 50px;
+}
+
+.dykcimg {
+  width: 25px;
+  height: 25px;
+  margin: 0 20rpx 0 30rpx;
+  vertical-align: middle;
+}
+
+.dykctext {
+  font-size: 38rpx;
+  color: #000;
+  font-weight: bold;
+}
+
+.renwu {
+  font-size: 24rpx;
+  color: #2499f9;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 15rpx;
+}
+
+.dykcsp {
+  margin: 20rpx 0;
+  padding: 0 20rpx;
+}
+
+.left, .lishikc {
+  display: inline-block;
+  width: 48.5%;
+  height: auto;
+  position: relative;
+  margin-bottom: 25rpx;
+  box-shadow: 0px 0px 5px 1px #e5e5e5;
+  -moz-box-shadow: 0px 0px 5px 1px #e5e5e5;
+  border-radius: 20rpx;
+}
+
+.left:nth-child(even) {
+  float: right;
+}
+
+/* .left:nth-child(even) .xuexijindu {
+  position:absolute;
+  bottom:90rpx;
+  left: 0rpx;
+} */
+
+.dykctupian, .lskcimg {
+  width: 100%;
+  height: 210rpx;
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+
+.xueshi {
+  font-size: 24rpx;
+  color: #969696;
+  display: inline-block;
+  width: 33%;
+}
+
+.shijian {
+  font-size: 24rpx;
+  color: #969696;
+  display: inline-block;
+  width: 33%;
+}
+
+.shuoming, .lscksm {
+  font-size: 30rpx;
+  margin-left: 15rpx;
+  width: 95%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.xuexijindu {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-left: 15rpx;
+  position: absolute;
+  bottom: 47rpx;
+}
+
+.left progress {
+  margin: 25rpx 0 15rpx 15rpx;
+  width: 90%;
+}
+
+.xsshijian {
+  padding: 0 15rpx 0rpx;
+  position: relative;
+}
+
+.xssj_zdkc {
+  color: red;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 33%;
+  text-align: right;
+}
+
+.xssj_qxxk {
+  color: #2499f9;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 33%;
+  text-align: right;
+}
+
+.lskcnr {
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+}
+
+.lishikc:nth-child(even) {
+  float: right;
+}
+
+.yiwancheng {
+  float: right;
+  margin: 10rpx 15rpx 15rpx;
+  font-size: 24rpx;
+  color: #969696;
+}
+
+.footer {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  background: #e5e5e5;
+  color: #585858;
+}
+
+@media screen and (min-width: 700px) {
+
+.xuexijindu {
+  position: absolute;
+  bottom: 12%;
+}
+
+}
+
+.dibu{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #7f7d8a;
+}
+.dibu_img{
+   width: 40rpx;
+   height: 40rpx;
+   margin-right: 10px;
+   animation: weuiLoading 0.6s steps(12, end) infinite;
+   vertical-align:middle;
+}
+@keyframes weuiLoading {
+   0% {
+     transform: rotate3d(0, 0, 1, 0deg);
+   }
+  50% {
+     transform: rotate3d(0, 0, 1, 180deg);
+   }
+   100% {
+     transform: rotate3d(0, 0, 1, 360deg);
+   }
+ }

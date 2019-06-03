@@ -1,0 +1,17 @@
+<!--pages/xinlipinggu/xinlipinggu.wxml-->
+<view class='xlpg'>
+  <view class='xlpg_nrks'>
+   <block wx:for="{{questionlist}}"  wx:for-item="psyQuestion" wx:for-index="index" wx:key="index">
+  <view class='nr'>
+    <view class='biaoti'><text>{{psyQuestion.id}}、{{psyQuestion.title}}</text></view>
+    <view class='xx' data-index='{{index}}' data-num="a" bindtap="menuClick"> <text class='xuanxiang {{psyQuestion.a==1?"xz":""}}'>A</text> <text>无</text></view>
+    <view class='xx' data-index='{{index}}' data-num="b" bindtap="menuClick"> <text class='xuanxiang {{psyQuestion.b==1?"xz":""}}'>B</text> <text>轻度</text></view>
+    <view class='xx' data-index='{{index}}' data-num="c" bindtap="menuClick"> <text class='xuanxiang {{psyQuestion.c==1?"xz":""}}'>C</text> <text>中度</text></view>
+    <view class='xx' data-index='{{index}}' data-num="d" bindtap="menuClick"> <text class='xuanxiang {{psyQuestion.d==1?"xz":""}}'>D</text> <text>偏重</text></view>
+    <view class='xx' data-index='{{index}}' data-num="e" bindtap="menuClick"> <text class='xuanxiang {{psyQuestion.e==1?"xz":""}}'>E</text> <text>严重</text></view>
+  </view>
+  </block>
+  <view class='tijiaocs yanse' catchtap='tjcs'><text>提交测试</text></view>
+</view>
+</view>
+

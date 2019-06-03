@@ -1,0 +1,36 @@
+<!--考试结果-->
+<view class='ksjg'>
+  <view class='tit'>
+    <view class='left'>
+      <view class='left_jianju'>
+        <text>生成试卷结果时间:</text>
+      </view>
+      <view>
+        <text>{{pPaperObj.endTime}}</text>
+      </view>
+    </view>
+    <view class='right'>
+      <image wx:if='{{isAccess=="1"}}' class='xiaolian' src='/img/xiaolian.png'></image>
+      <image wx:if='{{isAccess=="0"}}' class='xiaolian' src='/img/kuqi.png'></image>
+      <view class='fenshu'>
+        <text>{{pPaperObj.hasScore}}</text>
+      </view>
+      <view class='zf'>
+        <text>总分  {{testPaper.totalScore}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='sekuai'></view>
+  <view class='datika'>
+    <view class='dtk'>
+      <text>答题卡</text>
+    </view>
+    <view class='dtk_center'>
+      <block wx:for="{{pQuestionArr}}" wx:key="qid" wx:for-item="item" wx:for-index="qid">
+        <text wx:if="{{item.isRight=='1'}}" class='dtk_yanselan'>{{qid+1}}</text>
+        <text wx:if="{{item.isRight=='0'}}" class='dtk_yansered'>{{qid+1}}</text>
+        <text wx:if="{{item.isRight==''}}">{{qid+1}}</text>
+      </block>
+    </view>
+  </view>
+</view>

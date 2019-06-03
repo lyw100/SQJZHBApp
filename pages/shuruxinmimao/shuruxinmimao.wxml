@@ -1,0 +1,11 @@
+<view class="yanzheng">
+  <view class='tijiao'>
+    <view class='bt'><text>- 输入新密码 -</text></view>
+    <input placeholder='请输入新密码' type="password" class='sjh' bindinput ="pwdInput" value="{{pwd}}"/>
+    <input placeholder='请确认新密码' type="password" class='sjh'  bindinput ="pwd1Input" value="{{pwd1}}"/>
+    <view class='tijiaoanniu' catchtap='savepw'>
+      <text>保存</text>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,177 @@
+@import "../../wxParse/wxParse.wxss";
+page {
+  height: 100%;
+
+}
+.ksxq{
+  height: 100%;
+  background: #f3f4f6;
+}
+.tit{
+  height: 8%;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+  padding: 0 30rpx;
+  font-size: 34rpx;
+  color: #929292;
+  line-height: 90rpx;
+   box-sizing: border-box;
+}
+.timu{
+  color: #2499f9;
+}
+.djt{
+  float: right;
+}
+.dqs{
+  color: #2499f9;
+}
+.center{
+  width: 100%;
+  height: 83%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  overflow-y: scroll;
+}
+.xx{
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  color: #656565;
+  line-height: 60rpx;
+}
+.xuanxiang{
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px solid #2499f9;
+  color: #2499f9;
+  border-radius: 40rpx;
+  text-align: center;
+  line-height:50rpx;
+  font-weight: normal;
+  margin-right: 30rpx;
+}
+.xzyanse{
+  background: #2499f9;
+  color: #fff;
+}
+.kaoti{
+  color: #656565;
+  letter-spacing: 3rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+}
+.daan_xiangjie{
+  display: inline-block;
+  width:86%;
+  vertical-align: top;
+}
+
+.footer{
+  height: 9%;
+  border-top: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  overflow:hidden;
+}
+.dtk_sz{
+  display: inline-block;
+  margin-left: 32%;
+}
+.dtk_img{
+  width: 80rpx;
+  height: 90rpx;
+}
+.dtkonly_img{
+  margin-left:45%;
+}
+.shijian_dumiao{
+  width: 125rpx;
+  height: auto;
+  display: inline-block;
+  margin-left: 90rpx;
+  text-align: center;
+}
+.shijiant{
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: -10rpx;
+  padding-top: 5rpx;
+}
+.shijian{
+  font-size: 30rpx;
+  color: #2499f9;
+  display:inline-block;
+
+}
+.spr{
+   width: 100%;
+  height: 100%;
+}
+.spr_gd{
+  overflow-y: scroll;
+}
+/***
+  答题卡样式
+*/
+.dtk{
+  height: 100%;
+  background: #fff;
+}
+.dtk_tit{
+  height: 8%;
+  border-top: 1px solid #e5e5e5;
+  padding: 20rpx 30rpx 0;
+  font-size: 34rpx;
+  color: #2499f9;
+  box-sizing: border-box;
+}
+.dtk_center{
+  height: 83%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  overflow-y: scroll;
+}
+.dtk_center text{
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  border: 1px solid #cbcbcb;
+  color: #2499f9;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  margin: 0 60rpx 60rpx 0;
+}
+.dtk_center text:nth-child(6n){
+  margin-right: 0;
+}
+.dtk_center .dtk_yanse{
+  background: #2499f9;
+  color: #fff;
+  border: 1px solid #2499f9;
+}
+.dtk_ft{
+  height: 9%;
+  background: #cbcbcb;
+  font-size: 34rpx;
+  vertical-align: middle;
+  letter-spacing: 2rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.dtk_color{
+  background: #2499f9;
+  color: #fff;
+}
+
+
+@media  screen and (min-width:750px){
+  .tit{
+  line-height: 70rpx;
+}
+.dtk_ft{
+  line-height: 80rpx;
+}
+}
+  

@@ -1,0 +1,244 @@
+<!--shouyebofang.wxml-->
+<wxs src="../../wxs/indexOfUtil.wxs" module="tools"/>
+<view class='contai' wx:if='{{shiti==false}}'>
+<view class='tit tc'  wx:if="{{xianshi==false}}">
+  <!-- <image class='titimg' src='/img/yiyuan.png'></image> -->
+  <!--enable-progress-gesture 拖动手势开启    binderror 视频播放出错时触发 -->
+  <!--bindfullscreenchange  视频进入和退出全屏时触发  bindtimeupdate  播放进度变化时触发  -->
+  <!--bindplay 当开始/继续播放时触发play事件   controls 是否显示默认播放控件（播放/暂停按钮、播放进度、时间）    show-fullscreen-btn   是否显示全屏按钮   poster 视频播放切面图  initial-time  指定视频初始播放位置  -->
+  <!-- initial-time="{{sectionRecord.progress==sectionRecord.section.duration?0:sectionRecord.progress}}" -->
+  <video id="myVideo" enable-progress-gesture="false" src="{{sectionRecord.section.filepath}}" binderror="videoErrorCallback" bindfullscreenchange="bindFullscreenchange" bindtimeupdate="bindTimeupdate" bindplay="bindPlay" controls="true" poster="{{sectionRecord.section.thumbnail}}" show-fullscreen-btn="true"  bindended="bindended" initial-time="{{sectionRecord.progress==sectionRecord.section.duration?0:sectionRecord.progress}}" autoplay="true">
+  
+    <cover-image class="img" src="/img/beijingbai.jpg" wx:if="{{xianshi}}" />
+  </video>
+</view>
+<!--   {{sectionRecord.section.name}} -->
+<!-- 视屏播放首页展示显示' -->
+<view  wx:if='{{xianshiyemain}}'>
+<view style='padding:0 20rpx;'><text class='titinfo'>{{record.course.name}}</text></view>
+<view wx:if="{{record.course.isZJJZ==1}}" style='padding:20rpx 20rpx 0;margin-top:20rpx;border-top:1px solid #f5f5f5;'>
+  <view style='font-size:30rpx;margin-bottom:20rpx;'>
+    <text>专家</text>:
+    <text>{{record.course.speaker}}</text>
+  </view>
+  <view style='font-size:30rpx;'>
+    <text>专家介绍</text>:
+    <text>{{record.course.speakerIntroduction}}</text>
+  </view>
+</view>
+<view class='js'>
+  <text class='kczj'>课程章节</text>
+  <view class='kczj_ztsz' catchtap='tiaozhuanjj'>
+    <text class='kechengjjie'>课程简介</text>
+    <image src='/img/jianjie.png' class="kcjianjie"></image>
+  </view>
+</view>
+<!-- <view>
+  <block wx:if="{{subType==0}}"> 
+    <text class='xueshi'>学时:{{sectionRecord.section.hours}}</text>
+    <text class="wcjd" wx:if="{{isSign==1}}">上次完成进度:{{sectionRecord.sectionProgress}}%</text>
+    <block wx:if="{{false}}">
+      <image data-id="{{record.course.id}}" class='duigou' catchtap='tianjiaxuanke' src='/img/tianjiaxuanke.png' wx:if="{{isSign==0}}"></image>
+      <image class='duigou' data-id="{{record.course.id}}" catchtap='quxiaoxuanke' src='/img/xzdg.png' wx:if="{{isSign==1}}"></image>
+   </block>
+      <image class='fenxiang' src="/img/fenxiang.png"></image>
+    </block>
+</view> -->
+
+<view class='kcxz_zhangjie'>
+  <view class='ul'>
+    <block wx:for="{{sections}}"  wx:key="index" wx:for-item="section">
+    <view class='kcxz_liebiao {{section.yanse}}'>
+       <text catchtap="sectionTap" class="liebao_yangshi " data-courseid="{{record.course.id}}" data-index="{{index}}" data-sectionid="{{section.id}}">{{section.name}}</text>
+       <view class='zhengzbf'>
+        <text class='zzbf_color' wx:if="{{section.yanse=='zhangjie'||section.yanse=='zhangjieend zhangjie'}}">正在播放</text>
+        <text class='zzbf_wbf' wx:if="{{section.yanse==''}}">未播放</text>
+        <text class='zzbf_wbf' wx:if="{{section.yanse=='zhangjieend'}}">已完成</text>
+        <text class='zzbf_time'>{{section.time}}</text>
+       
+       </view>
+    </view>
+    </block>
+  </view>
+</view>
+<view class='bjzw'></view>
+<view class='xgkc'>
+  <text>相关课程</text>
+</view>
+    <view class='lskcnr'>
+
+      <view  class='lishikc' wx:for="{{moreList}}" wx:key="index" wx:for-item="course" wx:for-index="index">
+
+        <image data-id="{{course.id}}" class='lskcimg' data-index='{{index}}' catchtap='moreCourseTap' src='{{course.thumbnail}}'></image>
+        <!-- <text class='yiwancheng' >{{course.courseTime}}</text> -->
+        <view class='zhongjian'>
+          <text class='lscksm'>{{course.name}}</text>
+          <view class='jiangshi'>
+            <text wx:if="{{course.speaker!=null&&course.speaker.length>0}}" class='bixiuke'>讲师:{{course.speaker}}</text>
+            <text>{{course.subName}}</text>
+          </view>
+          <view  class='jiangshi'>
+            <text >{{course.courseTime}}</text>
+             <!-- wx:if="{{subType==0}}" -->
+            <text class='syxs'>{{course.hours}}学时</text>
+            <view class='xuank' >
+              <block wx:if="{{course.isSign==0}}">
+                <text data-id="{{course.id}}" data-index="{{index}}" class='xuanke' catchtap='chooseCourse'>选课</text>
+              </block>
+              <block wx:else>
+                <text data-id="{{course.id}}" data-index="{{index}}" class='yixuan' catchtap='cancleSign'>已选</text>
+              </block>
+            </view>
+          </view>
+        </view>
+         
+       <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                 <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+        <view class='lfph_dw' catchtap='moreCourseTap' data-id="{{course.id}}" data-index='{{index}}'   wx:if="{{course.isSign==0}}">
+          <view><text class='kck_weixuanke'>未选课</text><text>不计学时</text></view>
+        </view>
+        <!-- <view wx:if="{{course.isSign==1}}">
+                <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                 <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  </block>
+              </view> -->
+              
+                
+      </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+
+    </view>
+    <!-- 屏幕定位 -->
+    <view class="pmdw">
+        <view class='shoucang' style='width:100rpx;' data-id="{{record.course.id}}" catchtap='addcollection' wx:if='{{record.course.collection==0}}'>
+          <image  src='/img/shoucang.png'></image>
+          <view>
+            <text>收藏</text>
+          </view>
+        </view>
+
+        <view class='shoucang' style='width:100rpx;' data-id="{{record.course.id}}" catchtap='delcollection' wx:if='{{record.course.collection==1}}'>
+          <image src='/img/yishoucang.png'></image>
+          <view>
+            <text>已收藏</text>
+          </view>
+        </view>
+
+        <view class='dw_xuanke' style='width:100rpx;' data-id="{{record.course.id}}" catchtap='tianjiaxuanke' wx:if='{{isSign==0}}'>
+          <image src='/img/xuanke.png'></image>
+          <view>
+            <text>选课</text>
+          </view>
+        </view>
+
+        <view class='dw_xuanke' style='width:100rpx;'  wx:if='{{isSign==1}}'>
+          <image src='/img/yixuanke.png'></image>
+          <view>
+            <text>已选课</text>
+          </view>
+        </view>
+    </view>
+  </view>
+  <!-- 主页面完 -->
+  <!-- 点击课程简介 -->
+  <view class='kcjj_ym' wx:if='{{kcjj_yincang}}'>
+    <view class='tt_dingwei'>
+      <text class='tt_info'>{{sectionRecord.section.name}}</text>
+      <view class='xukefangdaweizhi' catchtap='ch_tz'>
+      <image src='/img/guanbi.png' class='tt_chahao'></image>
+      </view>
+    </view>
+    <view class='kcjj_js'>
+      <text wx:if="{{record.course.speaker!=null&&record.course.speaker.length>0}}" class='bixiuke'>讲师:{{record.course.speaker}}   </text>
+      <text >{{record.course.subName}}</text>
+    </view>
+    <view class='kechengjianjie'>
+      <text class='kcjj_timu'>课程简介:</text>
+      <text class='kcjj_nr'>{{record.course.introduction}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 刷脸登录-->
+<view class='nr' wx:if='{{shualiandl}}'  catchtouchmove="myCatchTouch">
+<camera device-position="{{device?'back':'front'}}" flash="off" binderror="error" style="width: 500rpx; height: 500rpx;">
+ <cover-image class="lefttop"  src="/img/zhegan.png" />
+</camera> 
+  <view class="anniu" catchtap="takePhoto" wx:if="{{countdown!=0}}" >
+       <text>请点击刷脸验证 {{countdown}}</text>
+  </view>
+  <view  class="anniu" catchtap="resetVideo"  wx:if="{{countdown==0}}">
+       <text>刷脸验证超时,本章节进度清空</text>
+  </view>
+</view>
+
+<view class="ksxq" wx:if="{{shiti}}">
+  <view class='tit'>
+    <text class='timu' wx:if="{{questions[curQindex].type==2}}">判断题</text>
+    <text class='timu' wx:if="{{questions[curQindex].type==0}}">单选题</text>
+    <text class='timu' wx:if="{{questions[curQindex].type==1}}">多选题</text>
+    <text class='djt'><text class='dqs'>{{curQindex+1}}</text>/{{questions.length}}</text>
+  </view>
+  <view class='center'>
+    <swiper current="{{curQswiper}}"  class='spr' bindchange="changeQuestion">
+      <block wx:for="{{questions}}" wx:key="qid" wx:for-item="item" wx:for-index="qid">
+        <swiper-item class="spr_gd">
+          <view class='fst'>
+            <!-- 题目 -->
+            <view class='kaoti'>{{qid+1+'.'+item.content}}</view>
+            <!-- 图片 -->
+            <view wx:if='{{item.img}}'>
+              <block wx:for='{{item.img}}' wx:key='imgid' wx:for-item='imgsrc'>
+                <image class='wxParse-img' src='{{imgsrc}}'></image>
+              </block>
+            </view>
+            <!-- 单选题选项 -->
+            <view class='daan' wx:if="{{item.type==0}}">
+              <block wx:for="{{item.xuanxiangArr}}" wx:key="xxid" wx:for-item="itemsub">
+                <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='{{itemsub.key}}'>
+                  <text class='xuanxiang {{item.hasChoose==itemsub.key?"xzyanse":""}}'>{{itemsub.key}}</text>
+                  <text class='daan_xiangjie'>{{itemsub.value}}</text>
+                </view>
+              </block>
+            </view>
+            <!-- 多选题选项 -->
+            <view class='daan' wx:if="{{item.type==1}}">
+              <block wx:for="{{item.xuanxiangArr}}" wx:key="xxid" wx:for-item="itemsub">
+                <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='{{itemsub.key}}'>
+                  <text class='xuanxiang {{tools.indexOfTF(item.hasChoose,itemsub.key)?"xzyanse":""}}'>{{itemsub.key}}</text>
+                  <text class='daan_xiangjie'>{{itemsub.value}}</text>
+                </view>
+              </block>
+            </view>
+            <!-- 判断题选项 -->
+            <view class='daan' wx:if="{{item.type==2}}">
+              <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='A'>
+                <text class='xuanxiang {{item.hasChoose=="1"?"xzyanse":""}}'>A</text>
+                <text class='daan_xiangjie'>正确</text>
+              </view>
+              <view class='xx' bindtap='menuClick' data-index='{{qid}}' data-key='B'>
+                <text class='xuanxiang {{item.hasChoose=="0"?"xzyanse":""}}'>B</text>
+                <text class='daan_xiangjie'>错误</text>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='{{curQindex==questions.length-1?"kt_anniu":"kt_anniuhui"}}'bindtap="{{curQindex==questions.length-1?'questionSubmit':''}}">
+    <text>提交</text>
+  </view>
+</view>

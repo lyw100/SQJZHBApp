@@ -1,0 +1,81 @@
+<view class='shz'  wx:if='{{shualiandl==false}}'>
+  <view class='shz_nr'>
+    <view class='shz_dz'>
+      <text>{{learnItem.learn.content}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>开始时间</text>
+      <text class='time_riqi'>{{learnItem.learn.startTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>结束时间</text>
+      <text class='time_riqi'>{{learnItem.learn.endTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>学员</text>
+      <text class='time_riqi'>{{learnItem.person}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>学习地点</text>
+      <text class='time_riqi'>{{learnItem.learn.address}}</text>
+    </view>
+  </view>
+  <!-- 学习中 -->
+  <view class='zhanse'></view>
+  <view class='xuexizhong' wx:if='{{learnItem.status>0}}'>
+    <view class='xxz_k'>
+      <text>签到时间</text>
+      <text class='time_riqi'>{{learnItem.startRealTime}}</text>
+    </view>
+    <view class='xxz_k'>
+      <text>签到地点</text>
+      <scroll-view scroll-x  class='time_riqi'>
+      <text>{{learnItem.startRealAddress}}</text>
+      </scroll-view>
+    </view>
+    <view class='xxz_zp'>
+      <text>签到照片</text>
+      <image class='xxz_photo' src='{{learnItem.startUrl}}'></image>
+      <view style='clear:both'></view>
+    </view>
+  </view>
+  <!-- 签退页面 -->
+  <view class='qiantuimk' wx:if='{{learnItem.status==2}}'>
+    <view class='xxz_k'>
+      <text>签退时间</text>
+      <text class='time_riqi'>{{learnItem.endRealTime}}</text>
+    </view>
+    <view class='xxz_k'>
+      <text>签退地点</text>
+      <scroll-view scroll-x  class='time_riqi'>
+      <text>{{learnItem.endRealAddress}}</text>
+      </scroll-view>
+    </view>
+    <view class='xxz_zp'>
+      <text>签退照片</text>
+      <image class='xxz_photo' src='{{learnItem.endUrl}}'></image>
+      <view style='clear:both'></view>
+    </view>
+
+  </view>
+  <!-- 学习中灰色按钮  签到 签退蓝色按钮 -->
+  <view class='{{nextHour>learnItem.learn.startTime&&nowTime<learnItem.learn.endTime?"anniu2":"anniu"}}' wx:if='{{learnItem.status==0}}' catchtap='{{nextHour>learnItem.learn.startTime&&nowTime<learnItem.learn.endTime?"qiandao":""}}'>
+    <text>签到</text>
+  </view>
+  <view class='anniu' wx:if='{{learnItem.status==1&&nowTime<learnItem.learn.endTime}}'>
+    <text>学习中</text>
+  </view>
+  <view class='anniu2' wx:if='{{learnItem.status==1&&nowTime>=learnItem.learn.endTime}}' catchtap='qiandao'>
+    <text>签退</text>
+  </view>
+</view>
+<!-- 刷脸登录 -->
+<view class='nr' wx:if='{{shualiandl}}'>
+  <camera device-position="{{device?'back':'front'}}" flash="off" binderror="error" style="width: 500rpx; height: 500rpx;">
+    <cover-image class="lefttop" src="{{imgurl}}" />
+  </camera>
+  <view class="shebieziti">
+    <text>{{facemsg==''?'识别中请稍后....':facemsg}}</text>
+  </view>
+
+</view>

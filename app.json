@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/shouye/shouye",
+    "pages/zhuye/zhuye",
+    "pages/shouyebofang/shouyebofang",
+    "pages/zhihuibaodian/zhihuibaodian",
+    "pages/xinwenxiaoxi/xinwenxiaoxi",
+    "pages/sousuo/sousuo",
+    "pages/denglu/denglu",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/gengduotuijian/gengduotuijian",
+    "pages/shualiandenglu/shualiandenglu",
+    "pages/xiaoxi/xiaoxi",
+    "pages/xitongxiaoxi/xitongxiaoxi",
+    "pages/xinwenxiangqing/xinwenxiangqing",
+    "pages/kechengku/kechengku",
+    "pages/paizhaoshangchuan/paizhaoshangchuan",
+    "pages/xinlipinggu/xinlipinggu",
+    "pages/wode/wode",
+    "pages/ceshijieguo/ceshijieguo",
+    "pages/kaoshijieguo/kaoshijieguo",
+    "pages/kaoshixiangqing/kaoshixiangqing",
+    "pages/yanzheng/yanzheng",
+    "pages/shuruxinmimao/shuruxinmimao",
+    "pages/zhuanti/zhuanti",
+    "pages/wodeqiandao/wodeqiandao",
+    "pages/yiwulaodong/yiwulaodong",
+    "pages/xinjianlaodong/xinjianlaodong",
+    "pages/chaxun/chaxun",
+    "pages/shenhezhong/shenhezhong",
+    "pages/kaishilaodong/kaishilaodong",
+    "pages/jizhongxuexi/jizhongxuexi",
+    "pages/jzxxzt/jzxxzt"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#2499f9",
+    "color": "#707070",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/zhuye/zhuye",
+        "text": "首页",
+        "iconPath": "img/shouye.png",
+        "selectedIconPath": "img/shouyexuanzhong.png"
+      },
+      {
+        "pagePath": "pages/kechengku/kechengku",
+        "text": "课程库",
+        "iconPath": "img/kechengku.png",
+        "selectedIconPath": "img/kechengkuxuanzhong.png"
+      },
+      {
+        "pagePath": "pages/zhihuibaodian/zhihuibaodian",
+        "text": "智慧宝典",
+        "iconPath": "img/zhihuibaodian.png",
+        "selectedIconPath": "img/zhihuibaodianxuanzhong.png"
+      },
+      {
+        "pagePath": "pages/wode/wode",
+        "text": "我的",
+        "iconPath": "img/wode.png",
+        "selectedIconPath": "img/wodexuanzhong.png"
+      }
+    ]
+  },
+  "permission":{
+    "scope.userLocation":{
+      "desc":"你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

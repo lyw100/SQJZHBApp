@@ -1,0 +1,145 @@
+/* page {
+  width: 100%;
+  height: 100%;
+  background: #f6f6f6;
+} */
+.shz{
+  width: 100%;
+  height: 100%;
+}
+.shz_nr,
+.sjlddd{
+  height: auto;
+  background: #fff;
+  padding: 0 40rpx;
+}
+.shz_dz{
+  height: 300rpx;
+  font-size: 34rpx;
+  position: relative;
+  padding-top:15rpx;
+  overflow-y:auto;
+
+}
+.shz_icon{
+  width: 242rpx;
+  height: 200rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.sh_timt{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+.sh_timt:last-child{
+  border-bottom:none;
+}
+.time_riqi{
+  display: inline-block;
+  width: 67%;
+  text-align: right;
+  color: #7d7d7d;
+  float:right;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.time_riqi2{
+  width: 50%;
+}
+.zhansewei{
+  height: 30rpx;
+  background: #f6f6f6;
+}
+.kaishi_timt{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+}
+.kaishi_timt2{
+   width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  border-top:1px solid #e5e5e5; 
+}
+.chuanzhaopain{
+  margin-top: 15rpx;
+}
+.zipai{
+  display: inline-block;
+  margin:0 35rpx 30rpx 0;
+}
+.zipai:nth-child(3n){
+  margin-right:0rpx;
+}
+.zipaishijian{
+  font-size:22rpx;
+  text-align:center;
+  margin-top:10rpx;
+
+}
+.guanbi{
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.tupaindingwei{
+   position: relative;
+   width:200rpx;
+  height:200rpx;
+}
+.tianjian{
+ width:200rpx;
+  height:200rpx;
+  vertical-align:top;
+}
+.anniu{
+  width: 85%;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 50rpx auto 100rpx;
+  background: #2499f9;
+  text-align: center;
+  color: #fff;
+  border-radius:50rpx; 
+  font-size: 34rpx;
+}
+/* .jiahaojl{
+  margin: 0 15rpx;
+} */
+/* 刷脸登录 */
+.nr{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:25%;
+  position:fixed;
+  top:0;
+  left: 0;
+  background-color:#fff;
+  z-index: 999999999;
+  height: 100%;
+  overflow: hidden;
+}
+.shebieziti{
+  width:85%;
+  text-align: center;
+  font-size: 40rpx;
+  padding-top: 50rpx;
+  color:#2499f9;
+
+}
+.lefttop{
+  width: 502rpx;
+  height: 502rpx;
+}
+

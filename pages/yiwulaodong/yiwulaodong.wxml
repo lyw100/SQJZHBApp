@@ -1,0 +1,81 @@
+<view class="ywld">
+  <!-- 我的页面 -->
+  <view class='ywld_xiala'>
+      <view class='xiala_qb' catchtap='quanbudj'>
+        <text>{{statusStr}}</text>
+        <image src='/img/xialajiantou.png' class='xiajiantou'></image>
+      </view>
+      
+      <view class='xiala_dw' wx:if='{{xiala_dwyc}}'>  
+        <text data-status='' class='{{status==""?"xiala_qb":""}}' catchtap='laodongdj'>全部</text>
+        <block  wx:if='{{type==0}}'>
+          <text data-status='0' class='{{status=="0"?"xiala_qb":""}}' catchtap='laodongdj'>未审核</text>
+          <text data-status='1' class='{{status=="1"?"xiala_qb":""}}' catchtap='laodongdj'>审核未通过</text>
+        </block>
+        <text data-status='2' class='{{status=="2"?"xiala_qb":""}}' catchtap='laodongdj'>未劳动</text>
+        <text data-status='3' class='{{status=="3"?"xiala_qb":""}}' catchtap='laodongdj'>劳动中</text>
+        <text data-status='4' class='{{status=="4"?"xiala_qb":""}}' catchtap='laodongdj'>已完成</text>
+      </view>
+  </view>
+  <view class='ywld_wode'>
+      
+      <view class='ywld_nr' wx:for="{{laborItems}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+
+        <!-- 审核中点击跳转页面 -->
+        <view class='nr_kuai' data-id='{{item.id}}' data-status='{{item.status}}' catchtap='shenhezhong'>
+          <view class='nr_tit'>
+            <text>{{item.labor.content}}</text>
+          </view>
+          <view class='nr_dwwz'>
+            <image src='/img/dingwei.png' class='nr_dwtb'></image>
+            <text style='vertical-align:middle;'>{{item.labor.startAddress}}</text>
+          </view>
+          <view class='nr_dwwz'>
+            <text>活动时间 : {{item.labor.startTime}} 至 {{item.labor.endTime}}</text>
+          </view>
+          <view class='nr_footer'>
+            <text wx:if='{{item.status==0}}' class='daishenhe'>待审核</text>
+            <text wx:if='{{item.status==1}}'  class='shenheweitongguo'>审核未通过</text>
+            <text wx:if='{{item.status==2}}'  class='shenhetongguo'>未劳动</text>
+            <text wx:if='{{item.status==3}}'  class='shenhetongguo'>劳动中</text>
+            <text wx:if='{{item.status==4}}'  class='shenhetongguo'>已完成</text>
+          </view>
+        </view>
+      </view>
+       
+      <view class='nr_zwnr' wx:if='{{laborItems.length==0}}'>
+        <text>暂无劳动内容</text>
+      </view>
+      
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+  </view>
+  <!-- 定位 -->
+  <view class='ywld_footer'>
+    <view class='wdym_tiap' wx:if='{{type==0}}'>
+      <image src='/img/wod.png' class='wode_tupian'></image>
+      <view class='wode_color'><text>我的</text></view>
+    </view>
+    <view class='wdym_tiap' wx:if='{{type==1}}' catchtap='wode_hui'>
+      <image src='/img/wdwxz.png' class='wode_tupian'></image>
+      <view class='wode_hui'><text>我的</text></view>
+    </view>
+
+    <view class='wdym_tijz' wx:if='{{type==1}}'>
+      <image src='/img/jz.png' class='wode_jztp'></image>
+      <view class='wode_color'><text>集中</text></view>
+    </view>
+
+    <view class='wdym_tijz' wx:if='{{type==0}}' catchtap='jz_dj'>
+      <image src='/img/jzwxz.png' class='wode_jztp'></image>
+      <view class='wode_hui'><text>集中</text></view>
+    </view>
+  </view>
+
+
+  <view class='xinjian' catchtap='xinjianlaodong' wx:if='{{type==0}}'>
+    <image src='/img/xinjian.png' class='xinjain_icon'></image>
+  </view>
+</view>

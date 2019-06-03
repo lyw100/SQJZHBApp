@@ -1,0 +1,14 @@
+<!--pages/xinwenxiangqing/xinwenxiangqing.wxml-->
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class='xwxq'>
+  <view class='tit'>
+    <text>{{title}}</text>
+  </view>
+  <view class='ribao'>
+    <text>{{laiyuan}}</text>
+  </view>
+  <view class='xwxq_nr'>
+    <!-- <text>{{content}}</text> -->
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>

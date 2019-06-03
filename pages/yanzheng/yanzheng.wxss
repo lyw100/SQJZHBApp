@@ -1,0 +1,61 @@
+.yanzheng{
+  width: 80%;
+  height:500rpx;
+  margin: 10% auto 0;
+  box-sizing: border-box;
+}
+.bt{
+  font-size: 38rpx;
+  color: #606060;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 100rpx;
+}
+input{
+  width: 96%;
+  height: 80rpx;
+  margin: 60rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+  padding-left: 10px;
+  font-size: 32rpx;
+  color:#888; 
+}
+.yzm{
+  width: 60%;
+  margin: 0;
+  border-bottom: none;
+}
+.dingwei{
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+  margin: 60rpx 0;
+}
+.hqyzm{
+  
+background-color: #fff;
+display: inline-block;
+font-size: 26rpx;
+color: rgb(136, 136, 136);
+border: 1px solid #888;
+border-radius: 10rpx;
+width: 160rpx;
+height: 70rpx;
+line-height: 70rpx;
+position: absolute;
+top: 0;
+right: 20rpx;
+z-index: 2;
+padding-right: 0;
+padding-left: 0;
+margin-top: 10rpx;
+}
+.tijiaoanniu{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background: #2499f9;
+  border-radius: 40rpx;
+}

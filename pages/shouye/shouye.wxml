@@ -1,0 +1,10 @@
+<!--shouye.wxml-->
+<view class="contai">
+  <image src="/img/logo.png" class="user-header"></image>
+  <view class='sjsc'>
+   <image src="/img/quantou.png" class="sc"></image>
+  </view>
+  <view class="anniu" bindtap="onTap" >
+       <text class="kaishi">开始学习</text>
+   </view>
+</view>

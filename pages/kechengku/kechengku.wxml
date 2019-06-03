@@ -1,0 +1,227 @@
+<!--课程库页面 -->
+<view class='kck'>
+  <!--弹出框结束-->
+  <view class='dingwei'>
+    <view class='xuanze'>
+      <scroll-view scroll-x="true" scroll-into-view="{{subid}}" class='xuanzekuan'>
+        <view class='xz_nr'>
+          <view id="sub" catchtap='subTap' class='xz_sm {{jingxuan}}'>精选</view>
+          <block wx:for="{{subTabList}}" wx:key="{{subIndex}}" wx:for-item="sub" wx:for-index="subIndex">
+            <view id="{{'sub'+sub.id}}" data-index="{{subIndex}}" data-subid="{{sub.id}}" catchtap='subTap' class='xz_sm {{sub.tabClass}}'>{{sub.name}}
+
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+      <view class='xz_anniu' catchtap='denghaoanniu'>
+        <image src='/img/er.png' class='anniu_img'></image>
+      </view>
+    </view>
+
+    <view class='tit2' wx:if="{{false}}">
+      <image class="sousuo" src='/img/sousuokuang.png' bindtap='onSousuo'></image>
+      <text class='sp {{shipin}}' catchtap='shipin'>视频</text>
+      <text class='sp {{tuwen}}' catchtap='tuwen'>图文</text>
+      <text class='sp {{yuyin}}' catchtap='yuyin'>语音</text>
+    </view>
+  </view>
+  <view class='neirong'>
+    <!--视频内容 -->
+    <view class='shipineirong' wx:if="{{shipin!=''}}">
+      <view class='lskcnr'>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" duration="500" circular="true" bindchange="imgChange" current="{{swiperCurrent}}" class="swiper lunbo" previous-margin="25px" next-margin="40px">
+          <block wx:for="{{imgUrls}}" wx:for-item="course" wx:for-index="index" wx:key="index">
+            <swiper-item class="titimg">
+              <image data-index='{{index}}' data-id='{{course.id}}' src="{{course.thumbnail}}" class="{{course.img}}" bindtap="bofang" />
+              <text class="{{course.text}}">{{course.name}}</text>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <block wx:if="{{jingxuan!='' && zjjzList.length != 0}}">
+        <view class="subTitle">
+          <text class='dykctext' wx:if="{{jingxuan!=''}}">专家讲座</text>
+          <text class='genduotuijian' wx:if="{{jingxuan!=''}}"  catchtap='moreZJJZ'>查看更多</text>
+        </view>
+        <view class="dykcsp">
+         <block wx:for="{{zjjzList}}" wx:key="index" wx:for-item="course" wx:for-index="index">
+        <view class='left'>
+                <image data-id="{{course.id}}" class='dykctupian' data-index='{{index}}' catchtap='bofang' src='{{course.thumbnail}}'></image>
+
+              <text class="shuoming">{{course.name}}</text>
+              <view class="xsshijian">
+                <text class="shijian">{{course.courseTime}}</text>
+                <text class="xueshi" >学时:{{course.hours}}</text>
+
+                <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="zjjz" data-index="{{index}}" catchtap='cancleSign' wx:if='{{course.isSign==1}}'>
+                    <image class='xuketupian' src='/img/yixuanke.png'></image>
+                  </view>
+                  <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="zjjz" data-index="{{index}}" catchtap='chooseCourse' wx:if='{{course.isSign==0}}'>
+                    <image class='xuketupian' src='/img/xuanke.png'></image>
+                  </view>
+
+              </view>
+              <!-- 专家讲座 新课程 -->
+              <block wx:if="{{course.isNew==1}}">
+                <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                <image src='/img/new.png' wx:else class='new_dw'></image>
+              </block>
+                <block wx:else>
+                <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+              </block>
+
+              <view class='lfph_dw' catchtap='bofang' data-id="{{course.id}}" data-index='{{index}}' wx:if="{{course.isSign==0}}">  
+                <text class='kck_weixuanke'>未选课</text>
+                <text>不记学时</text>
+              </view>
+
+              <!-- <view wx:if="{{course.isSign==1}}">
+                <block wx:if="{{course.isNew==1}}">
+                
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+                 
+              </view> -->
+              </view>
+               </block>
+               </view>
+      </block>
+      <block wx:for="{{subList}}" wx:if="{{subList[subIndex].courseList!=null}}" wx:key="{{subIndex}}" wx:for-item="sub" wx:for-index="subIndex">
+        <view class="subTitle">
+          <text class='dykctext' wx:if="{{jingxuan!=''}}">{{sub.name}}</text>
+          <text class='genduotuijian' wx:if="{{jingxuan!=''}}" data-name="{{sub.name}}" data-subid="{{sub.id}}" catchtap='moreSubCourse'>查看更多</text>
+        </view>
+        <view class="dykcsp">
+          <block wx:for="{{sub.courseList}}" wx:key="index" wx:for-item="course" wx:for-index="index">
+            <block wx:if="{{subIndex==1&&index==0}}">
+              <view class='sheding'>
+                <view class='dykscsp_tupian'>
+                  <image data-id="{{course.id}}" data-index='{{index}}' class="ddwhjy_img" src='{{course.thumbnail}}' catchtap='bofang' src='{{course.thumbnail}}'></image>
+
+                <!-- 专家课程  新课程 -->
+                <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+
+                  <view data-id="{{course.id}}" data-index='{{index}}'  catchtap='bofang'class='dykscsp_dingwei' wx:if="{{course.isSign==0}}">
+                      <text class='kck_weixuanke'>未选课</text>
+                      <text>不记学时</text> 
+                  </view>
+
+
+                  <!-- <view wx:if="{{course.isSign==1}}">
+                    <block wx:if="{{course.isNew==1}}">
+                      <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                    </block>
+                    <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+                  </view> -->
+                </view>
+                <view class='ddwhjy_jianju'>
+                  <text class='ddwjjy_bt'>{{course.name}}</text>
+                </view>
+                <view class="xsshijian">
+                  <text class="shijian">{{course.courseTime}}</text>
+                  <text class="xueshi" >学时:{{course.hours}}</text>
+
+                  <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="{{subIndex}}" data-index="{{index}}" catchtap='cancleSign' wx:if='{{course.isSign==1}}'>
+                    <image class='xuketupian' src='/img/yixuanke.png'></image>
+                  </view>
+                  <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="{{subIndex}}" data-index="{{index}}" catchtap='chooseCourse' wx:if='{{course.isSign==0}}'>
+                    <image class='xuketupian' src='/img/xuanke.png'></image>
+                  </view>
+                </view>
+              </view>
+            </block>
+
+            <view class='left' wx:else>
+              <image data-id="{{course.id}}" class='dykctupian' data-index='{{index}}' catchtap='bofang' src='{{course.thumbnail}}'></image>
+
+              <text class="shuoming">{{course.name}}</text>
+              <view class="xsshijian">
+                <text class="shijian">{{course.courseTime}}</text>
+                <text class="xueshi" >学时:{{course.hours}}</text>
+
+                <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="{{subIndex}}" data-index="{{index}}" catchtap='cancleSign' wx:if='{{course.isSign==1}}'>
+                    <image class='xuketupian' src='/img/yixuanke.png'></image>
+                  </view>
+                  <view class='xukefangdaweizhi' data-id="{{course.id}}" data-subIndex="{{subIndex}}" data-index="{{index}}" catchtap='chooseCourse' wx:if='{{course.isSign==0}}'>
+                    <image class='xuketupian' src='/img/xuanke.png'></image>
+                  </view>
+
+              </view>
+                <!-- 专家课程  新课程 -->
+              <block wx:if="{{course.isNew==1}}">
+                <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                <image src='/img/new.png' wx:else class='new_dw'></image>
+              </block>
+              <block wx:else>
+                <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+              </block>
+
+              <view class='lfph_dw' catchtap='bofang' data-id="{{course.id}}" data-index='{{index}}' wx:if="{{course.isSign==0}}">
+                  <text class='kck_weixuanke'>未选课</text>
+                  <text>不记学时</text> 
+              </view>
+
+              <!-- <view wx:if="{{course.isSign==1}}">
+                <block wx:if="{{course.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+              </view> -->
+            </view>
+
+          </block>
+          <view style='clear:both;'></view>
+        </view>
+      </block>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+    </view>
+    <!--视频内容 完-->
+
+    <!--图文页面 -->
+    <view class='tuweneirong' wx:if="{{tuwen!=''}}">图文暂无信息</view>
+    <!--图文页面  完-->
+
+    <!--语音页面 -->
+    <view class='yuyinneirong' wx:if="{{yuyin!=''}}">语音暂无信息</view>
+    <!--语音页面  完-->
+  </view>
+</view>
+
+<!--弹出框开始-->
+<view class="zhezhao" hidden="{{menuflag}}" catchtap='conceal'>
+  <view class="tanchu_view">
+    <view class='zz_jj'>
+      <text catchtap='subTap' class='{{jingxuan=="xzzhangtai"?"zhezhao_color":""}}'>精选</text>
+      <image src='/img/hengxian.png' class='zz_img' wx:if="{{jingxuan=='xzzhangtai'}}"></image>
+    </view>
+
+    <block wx:for="{{subTabList}}" wx:key="{{subIndex}}" wx:for-item="sub" wx:for-index="subIndex">
+      <view class='zz_jj'>
+        <text class='{{sub.tabClass=="xzzhangtai"?"zhezhao_color":""}}' data-index="{{subIndex}}" data-subid="{{sub.id}}" catchtap='subTap'>{{sub.name}}</text>
+        <image src='/img/hengxian.png' class='zz_img' wx:if="{{sub.tabClass=='xzzhangtai'}}"></image>
+      </view>
+      <!-- <view  class='xz_sm {{sub.tabClass}}'>{{sub.name}} </view> -->
+    </block>
+
+
+  </view>
+</view>

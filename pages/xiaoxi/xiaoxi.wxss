@@ -1,0 +1,43 @@
+.tit{
+  height:auto;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+   align-items: center;
+}
+.tubiao{
+  width:100rpx;
+  height: 100rpx;
+  position: relative;
+  display: inline-block;
+}
+.shuzi{
+  padding :1rpx 12rpx;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 0;
+  right: -12rpx;
+  background: red;
+}
+.xtxx{
+  width: 100rpx;
+  height: 100rpx;
+}
+.xitongxiaoxi{
+  margin-left: 30rpx;
+  display: inline-block;
+  width: 80%;
+}
+.xtxx_info{
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;
+font-size: 28rpx;
+color: #b8b8b8;
+margin-top: 10rpx;
+}

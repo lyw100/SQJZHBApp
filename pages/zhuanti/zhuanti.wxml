@@ -1,0 +1,47 @@
+<!--pages/zhuanti/zhuanti.wxml-->
+<view class="nr">
+    <view class='shipineirong'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" duration="500" circular="true" current="{{swiperCurrent}}" class="swiper lunbo" previous-margin="25px" next-margin="40px" bindchange="imgChange" bindanimationfinish="gaibian">
+        <block wx:for="{{imgUrls}}" wx:for-item="imgUrl" wx:for-index="index" wx:key="index">
+          <swiper-item class="titimg">
+            <image data-index='{{index}}' src="{{imgUrl.url}}" class="{{imgUrl.img}}"/>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class='lskcnr'>
+        <view>
+          <text class='dykctext'>相关课程</text>
+        </view>
+
+        <view class="dykcsp">
+          <view class='lishikc' wx:for="{{courseList}}" wx:key="index" wx:for-item="course" wx:for-index="index">
+            <image data-courseid="{{course.id}}" class='lskcimg' data-index='{{index}}' catchtap='bofang' src='{{course.thumbnail}}'></image>
+            <text class="shuoming">{{course.name}}</text>
+            <view class="xsshijian">
+              <text class="shijian">{{course.courseTime}}</text>
+              <text wx:if="{{course.subject.type==0}}" class="xueshi">学时:{{course.hours}}</text>
+              <view class='xukefangdaweizhi' data-id="{{course.id}}"  data-index="{{index}}" catchtap='cancleSign' wx:if='{{course.isSign==1}}'>
+                <image class='xuketupian' src='/img/yixuanke.png'></image>
+              </view>
+
+              <view class='xukefangdaweizhi' data-id="{{course.id}}"  data-index="{{index}}" catchtap='chooseCourse' wx:if='{{course.isSign==0}}'>
+                <image class='xuketupian' src='/img/xuanke.png'></image>
+              </view>
+            </view>
+            <view class='lfph_dw' catchtap='bofang'  data-courseid="{{course.id}}" data-index='{{index}}' wx:if="{{course.isSign==0}}">
+                <text class='zt_weixuanke'>未选课</text>
+                <text>不记学时</text>
+            </view>
+          </view>
+          <view class='dibu' wx:if='{{dibu}}'>
+              <image src='/img/jiazai.png' class="dibu_img"></image>
+              <text>火速加载中...</text>
+          </view>
+        </view>
+        <view hidden='{{courseList.length>0}}' style="margin-left:20rpx;font-size:30rpx">
+          <text>该专题暂无课程</text>
+        </view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,40 @@
+<view class="csjg">
+  <view class='tit'>
+    <view class='tit_sj'>
+      <text>编号:{{bianhao}}</text>
+    </view>
+    <view class='tit_sj'>
+      <text>工具:90项症状清单(SCL-90)</text>
+    </view>
+    <view class='tit_sj'>
+      <text>姓名:{{jzname}}</text>
+    </view>
+    <view class='tit_sj'>
+      <text>日期:{{time}}</text>
+    </view>
+    <view class='tit_sj'>
+      <text>总分:<text class='fenshu'>{{zongfen}}</text></text>
+    </view>
+    <view class='tit_sj'>
+      <text>总均分:{{zongjunfen}}</text>
+      <text class='jieguo'>结果: <text class='fenshu'>{{jieguo}}</text></text>
+    </view>
+  </view>
+  <view class='csjg_nr'>
+<block wx:for="{{yinzilist}}"  wx:for-item="map" wx:for-index="index" wx:key="index">
+     <view class='csjg_pj'>
+      <view class='csjg_tt'>
+        <view class='qth'>
+          <image class='yuanquan' src='/img/dian.png'></image>
+          <text class='qutihua'>{{map.yinziname}}</text>
+        </view>
+        <text class='lh'>略号:<text class='hongcolor'>{{map.luehao}}</text></text>
+        <text>分值:<text class='hongcolor'>{{map.yinzifenshu}}</text></text>
+      </view>
+      <view class='csjg_sm'>
+        <text>{{map.msg}}</text>
+      </view>
+    </view> 
+</block>  
+  </view>
+</view>

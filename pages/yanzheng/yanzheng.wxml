@@ -1,0 +1,14 @@
+<view class="yanzheng">
+  <!--提交页面-->
+  <view class='tijiao'>
+    <view class='bt'><text>- 手机号码验证 -</text></view>
+    <input placeholder='请输入手机号' class='sjh' bindinput ="userNameInput" value="{{username}}"/>
+    <view class='dingwei'>
+      <input  placeholder='请输入验证码' class='yzm' bindinput ="yzmInput" value="{{yzm}}"/>
+      <button  disabled='{{disabled}}' class='hqyzm' bindtap='getyzm'>{{time}}</button >
+    </view>
+    <view class='tijiaoanniu' catchtap='tj'>
+      <text>提交</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,90 @@
+/* pages/kaoshijieguo/kaoshijieguo.wxss */
+.tit{
+  height: 370rpx;
+  width: 100%;
+  z-index: 99;
+  background: #2499f9;
+  color: #fff;
+  position: fixed;
+  top: 0;
+}
+.left{
+  display: inline-block;
+  width: 35%;
+  font-size: 28rpx;
+  vertical-align: top;
+  padding-left: 30rpx;
+  color: #d7e7fe;
+}
+.left_jianju{
+  margin: 20rpx 0 10rpx;
+}
+.right{
+  display: inline-block;
+  vertical-align: top;
+  padding: 30rpx 0;
+}
+.xiaolian{
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 20rpx;
+}
+.kulian{
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 20rpx;
+}
+.fenshu{
+  width: 170rpx;
+  height: 120rpx;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+  line-height: 120rpx;
+  margin: 10rpx 0 10rpx;
+  font-size: 90rpx;
+}
+.zf{
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+.sekuai{
+  width: 100%;
+  height: 20rpx;
+  background: #f4f4f2;
+  margin-top: 370rpx;
+}
+.dtk{
+  width: 100%;
+  height: 90rpx;
+  border-bottom:1px solid #e5e5e5;
+  line-height: 90rpx;
+  padding-left: 30rpx;
+}
+.dtk_center{
+   padding: 80rpx 30rpx 30rpx;
+} 
+.dtk_center text{
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  border: 1px solid #cbcbcb;
+  color: #2499f9;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  margin: 0 60rpx 60rpx 0;
+}
+.dtk_center text:nth-child(6n){
+  margin-right: 0;
+}
+.dtk_center .dtk_yanselan{
+  background: #2499f9;
+  color: #fff;
+  border: 1px solid #2499f9;
+}
+.dtk_center .dtk_yansered{
+  background: #ff5555;
+  color: #fff;
+  border: 1px solid #ff5555;
+}

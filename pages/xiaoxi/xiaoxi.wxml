@@ -1,0 +1,21 @@
+<!--消息页面 -->
+<view class='tit' catchtap='tzxtxx'>
+  <view class='tubiao'>
+    <image class='xtxx' src='/img/xitongxiaoxi.png'></image>
+    <text class='shuzi' style='display:{{style.xtshuzishow}}'>{{xtshuzi}}</text>
+  </view>
+  <view class='xitongxiaoxi'>
+    <text>系统消息</text>
+  </view>
+</view>
+
+<view class='tit' catchtap='tzxwxx'>
+  <view class='tubiao'>
+    <image class='xtxx' src='/img/xinwenxiaoxi.png'></image>
+     <text class='shuzi' style='display:{{style.xwshuzishow}}'>{{xwshuzi}}</text>
+  </view>
+  <view class='xitongxiaoxi'>
+    <text>新闻消息</text>
+   <view class='xtxx_info'> <text>{{xwtitle}}</text></view>
+  </view>
+</view>

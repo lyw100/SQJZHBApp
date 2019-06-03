@@ -1,0 +1,65 @@
+<!--zhuye.wxml-->
+<view class="contai">
+  <view class='tit'>
+    <image class="sousuo" src='/img/sousuokuang.png' bindtap='onSousuo'></image>
+    <!-- <image class="sis" src='/img/saoyisao.png' bindtap='scanTap'></image>
+    <view class='xinxi_dwfl'>
+    <image class="xinxi" src='/img/wuxiaoxi.png' catchtap='xiaoxiyemian'></image>
+       <view class='xinzi_shuzi {{jiujiujia}}'  wx:if='{{msgcount>0}}'>{{msgcount}}</view> 
+    </view> -->
+  </view>
+  <view class='titimg'>
+  <!-- indicator-dots 是否显示面板指示点 autoplay 是否自动切换    current  当前所在滑块的 index   -->
+  <!-- interval 自动切换时间间隔 duration 滑动动画时长  circular 是否采用衔接滑动  -->
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" current="{{swiperCurrent}}"  class="swiper">
+    <block wx:for="{{imgUrls}}"  wx:for-item="special" wx:for-index="index" wx:key="index">
+      <swiper-item class="dingwei">
+        <image data-index='{{index}}' data-specialid='{{special.id}}' data-type='{{special.type}}' src="{{special.thumbnail}}" class="biaotou" bindtap="bannerTap" />
+        <text class="titxinxi">{{special.name}}</text>
+      </swiper-item>
+    </block>
+  </swiper>
+    
+  </view>
+  <view class='dukc_tiaoshi'>
+    <image class="dykcimg" src='/img/dangyuekecheng.png'></image>
+    <text class='dykctext'>当月课程</text>
+    <text class="renwu">每月要求完成8学时 您已完成 <text id='hours'>{{hours}}</text> 学时</text>
+  </view>
+  <view id="nowList" class="dykcsp">
+    <view  class='left' wx:for="{{nowList}}" wx:key="index" wx:for-item="sign" wx:for-index="index">
+        <image data-id="{{sign.id}}" class='dykctupian' data-index='{{index}}' catchtap='signRecord' src='{{sign.course.thumbnail}}'></image>
+        <!-- <image class='dykctupian' data-index='{{index}}' src='/img/yiyuan.png'></image> -->
+        <text data-index='{{index}}' class="shuoming">{{sign.course.name}}</text>
+        <view class="xsshijian">
+               <text data-index='{{index}}' class="shijian">{{sign.courseTime}}</text>
+               <text data-index='{{index}}' class="xueshi">学时:{{sign.course.hours}}</text>
+               <text class='xssj_zdkc' wx:if="{{sign.isAssign==1}}">指定课程</text>
+               <text data-courseid="{{sign.course.id}}"  data-index="{{index}}"  class='xssj_qxxk' catchtap='cancleSign' wx:if="{{sign.isAssign!=1&&sign.progress==0}}">取消选课</text>
+        </view>
+        <text data-index='{{index}}' class='xuexijindu'>学习进度</text>
+        <progress data-index='{{index}}' percent="{{sign.courseProgress}}" show-info color="#2499f9" stroke-width="3"/>
+
+        
+      </view>
+   </view>
+
+  <view>
+    <image class="dykcimg" src='/img/lishikecheng.png'></image>
+    <text class='dykctext'>历史课程</text>
+  </view>
+  <view id="historyList" class='lskcnr'>
+    <view  class='lishikc' wx:for="{{historyList}}" wx:key="index" wx:for-item="sign" wx:for-index="index">
+        <image catchtap='swipclick' data-courseid="{{sign.course.id}}" data-id="{{sign.id}}" class='lskcimg' data-index='{{index}}' src='{{sign.course.thumbnail}}'></image>
+        <!-- <image class='lskcimg' data-index='{{index}}' src='/img/yiyuan.png'></image> -->
+        <text class='lscksm'>{{sign.course.name}}</text>
+        <text class='yiwancheng'>{{sign.state==1?'已完成':'未完成'}}</text>
+    </view>
+
+    <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+    </view>
+  </view>
+  <!-- <view class='footer' hidden='{{footer}}'>加载更多</view> -->
+</view>

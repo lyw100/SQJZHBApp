@@ -1,0 +1,61 @@
+<view class='xjld'>
+  <view class='xjld_nr'>
+    <textarea placeholder="请输入劳动内容..."  adjust-position="true" class='txtaa' bindinput="bindTextAreaInput" />
+    <view class='xzsj'>
+      <view class='left'>
+        <view class='kaishi'>
+          <text>开始时间</text>
+        </view>
+        <picker mode="date" value="{{startDate}}" start="{{startMinDate}}" end="{{startMaxDate}}"  bindchange="bindDateChange">
+          <view class="picker">
+            <view class='left_riqi'>
+              <text>{{startDate}}</text>
+            </view>
+          </view>
+        </picker>
+
+        <picker mode="time" value="{{startTime}}" start="{{startMinTime}}"  bindchange="bindTimeChange">
+          <view class="picker">
+            <view class='xiaoshi'>
+              <text>{{startTime}}</text>
+            </view>
+          </view>
+        </picker>
+      </view>
+      <image src='/img/shengfenjiantou.png' class='zjt'></image>
+
+      <view class='right'>
+        <view class='kaishi'>
+              <text>结束时间</text>
+        </view>
+        <picker mode="date" value="{{endDate}}" start="{{endtMinDate}}" end="{{endtMaxDate}}" bindchange="bindDateChange2" >
+          <view class="picker">
+            <view class='left_riqi'>
+              <text>{{endDate}}</text>
+            </view>
+          </view>
+        </picker>
+
+        <picker mode="time" value="{{endTime}}"  start="{{endMinTime}}" bindchange="bindTimeChange2">
+          <view class="picker">
+            <view class='xiaoshi'>
+              <text>{{endTime}}</text>
+            </view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='lddd' catchtap='addStartAddress'>
+      <text>开始劳动地点</text>
+      <text class='lddd_shuru'>{{startAddress==''?'请输入劳动开始地点':startAddress}}</text>
+    </view>
+
+    <view class='lddd ldjsdd' catchtap='addEndAddress'>
+      <text>结束劳动地点</text>
+      <text class='lddd_shuru'>{{endAddress==''?'请输入劳动结束地点':endAddress}}</text>
+    </view>
+  </view>
+  <view class='anniu' catchtap='saveLabor'>
+    <text>提交</text>
+  </view>
+</view>

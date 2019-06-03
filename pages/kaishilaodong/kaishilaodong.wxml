@@ -1,0 +1,88 @@
+<view class='shz'  wx:if='{{shualiandl==false}}'>
+  <view class='shz_nr'>
+    <view class='shz_dz'>
+      <text>{{laborItem.labor.content}}</text>
+      <image src='/img/shtg.png' wx:if='{{laborItem.status==2}}' class='shz_icon'></image>
+      <image src='/img/ldz.png' wx:if='{{laborItem.status==3}}' class='shz_icon'></image>
+      <image src='/img/ldjs.png' wx:if='{{laborItem.status==4}}' class='shz_icon'></image>
+    </view>
+    <view class='sh_timt'>
+      <text>开始时间</text>
+      <text class='time_riqi'>{{laborItem.labor.startTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>结束时间</text>
+      <text class='time_riqi'>{{laborItem.labor.endTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>执行人</text>
+      <text class='time_riqi'>{{laborItem.person}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>开始劳动地点</text>
+      <text class='time_riqi'>{{laborItem.labor.startAddress}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>结束劳动地点</text>
+      <text class='time_riqi'>{{laborItem.labor.endAddress}}</text>
+    </view>
+  </view>
+  <view class='zhansewei'></view>
+  <view class='sjlddd'>
+    <view class='kaishi_timt' wx:if='{{laborItem.status>2}}'>
+      <text>实际开始劳动地点</text>
+      <scroll-view scroll-x class='time_riqi time_riqi2'>
+        <text>{{laborItem.startRealAddress}}</text>
+      </scroll-view>
+    </view>
+
+    <!-- 在结束劳动页面里显示 -->
+    <view class='kaishi_timt' wx:if='{{laborItem.status>3}}'>
+      <text>实际结束劳动地点</text>
+      <scroll-view scroll-x class='time_riqi time_riqi2'>
+        <text>{{laborItem.endRealAddress}}</text>
+      </scroll-view>
+    </view>
+
+    <!-- 在劳动中页面里显示 -->
+    <view class='kaishi_timt2' wx:if='{{laborItem.status>2}}'>
+      <text>实际开始时间</text>
+      <text class='time_riqi'>{{laborItem.startRealTime}}</text>
+    </view>
+    <view class='kaishi_timt2' wx:if='{{laborItem.status>3}}'>
+      <text>实际结束时间</text>
+      <text class='time_riqi'>{{laborItem.endRealTime}}</text>
+    </view>
+    
+
+    <view class='chuanzhaopain'>
+    <block  wx:for="{{laborItem.pictures}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+      <view class='zipai'>
+        <view class='tupaindingwei'>
+          <image src='{{item.picture}}' class='tianjian'></image>
+          <image src='/img/sctp.png' data-index='{{index}}' wx:if='{{item.isUsed==0}}' class='guanbi' catchtap='removePicture'></image>
+        </view>
+        <view class='zipaishijian'><text>{{item.time}}</text></view>
+      </view>
+    </block>
+
+    <image src='/img/tianjian.png' class='tianjian jiahaojl' catchtap='paizhao' wx:if="{{tijiao}}"></image>
+    </view>
+  </view>
+  <view class='anniu' catchtap='tijiao_zhuye' wx:if='{{tijiao}}'>
+    <text>提交</text>
+  </view>
+  <view class='anniu' catchtap='jieshulaodong' wx:if='{{jieshu}}'>
+    <text>结束劳动</text>
+  </view>
+</view>
+
+<view class='nr' wx:if='{{shualiandl}}'  catchtouchmove="myCatchTouch">
+<camera device-position="{{device?'back':'front'}}" flash="off" binderror="error" style="width: 500rpx; height: 500rpx;">
+ <cover-image class="lefttop"  src="{{imgurl}}" />
+</camera> 
+  <view class="shebieziti">
+        <text>{{facemsg==''?'识别中请稍后....':facemsg}}</text>
+  </view>
+  
+</view>

@@ -1,0 +1,188 @@
+<!--sousuo.wxml-->
+<view class='nr'>
+  <view class='tit'>
+    <view class='titipt'>
+      <icon type='search' size='16' color='#2499f9' class='sousuotb'></icon>
+      <input type='text' placeholder="搜索信息" adjust-position="false" bindinput="iptchufa" value='{{inputText}}' bindconfirm='inputConfirm'></input>
+      <icon type='clear' size='16' class='chahao' wx:if="{{qkch}}" bindtap='clearInput'></icon>
+    </view>
+    <text class='quxiao' catchtap='quxiao' hidden='{{inputText!=""}}'>取消</text>
+    <text class='quxiao' catchtap='inputConfirm' hidden='{{inputText==""}}'>搜索</text>
+  </view>
+  <!-- 主页搜索页 -->
+  <view class='sousuonr' wx:if="{{zhuyesousuo}}">
+    <view hidden='{{sercherStorage.length==0}}'>
+      <view>
+        <text class='lishi'>搜索历史</text>
+        <image class='qingkong' src='/img/qingkong.png' bindtap='clearSearchStorage'></image>
+      </view>
+      <view class='sslsnr' style="height:{{height}}">
+        <view wx:for="{{sercherList}}" wx:key="item.id" style='display:inline-block'  data-name='{{item.name}}' bindtap='tapSercherStorage'>
+            <text id='{{item.id}}'>{{item.name}}</text>
+        </view>
+      </view>
+      <image class='xiajiantou' src='/img/sousuoxiala.png' bindtap='changeHeight'></image>
+    </view>
+    <view class='lishi'>热门搜索</view>
+    <view class='remensou' wx:if='{{hotList.length>0}}'>
+      <view class='rmss' atchtap='tzsouzuojieguoym' wx:for="{{hotList}}" wx:key="{{index}}" bindtap='hotTap' data-name='{{item.name}}' id='{{item.id}}'>
+        <text class='one' wx:if="{{index==0}}">{{index+1}}</text>
+        <text class='two' wx:elif="{{index==1}}">{{index+1}}</text>
+        <text class='tree' wx:elif="{{index==2}}">{{index+1}}</text>
+        <text class='for' wx:else>{{index+1}}</text>
+        <text class='lishinr'>{{item.name}}</text>
+        <text class='liuganliang'>{{item.clicks}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 输入内容搜索页 -->
+  <view class='synrye' wx:if="{{ssnrjieguo}}">
+    <view class='synrinfo' wx:for="{{searchList}}" wx:key="{{item.id}}" data-name='{{item.name}}' id='{{item.id}}' catchtap='setSercherStorage'>
+      <text class='shuoming'>{{item.name}}</text>
+    </view>
+  </view>
+  <!-- 点击搜索出来内容页索页 -->
+  <view class='dianjijieguo' wx:if="{{djjg}}">
+    <scroll-view scroll-x  class='djjg_tit'>
+      <view wx:for="{{listAll}}" wx:key="{{index}}" style='display:inline-block'>
+        <text class="{{item.subjectId==choiceId?'yanse':'zcfg'}}" catchtap='zcfganniu' id='{{item.subjectId}}'>{{item.subjectName}}</text>
+      </view>
+      <!-- <text class='zcfg yanse' catchtap='zcfganniu'>政策法规</text>
+      <text class='zcfg' catchtap='ddwhanniu'>道德文化教育</text>
+      <text catchtap='sxjkjyanniu'>思想健康教育</text> -->
+    </scroll-view>
+    <!-- 政策法规页面 -->
+    <view class='djjg_nr' wx:if="{{zcfgym}}">
+      <view class='djjg_baogao' wx:for="{{topList}}" wx:key="{{index}}" id='{{item.id}}' data-type='{{item.type}}'>
+        <image class='djjg_img' src='{{item.thumbnail}}' id='{{item.id}}' catchtap='tzbfyemain'></image>
+        <view class='djjg_sm'>
+          <view class='djjg_bg' catchtap='tzbfyemain' id='{{item.id}}' >
+            <text>{{item.name}}</text>
+          </view>
+          <view class='djjg_js'>
+            <text>讲师 : {{item.speaker}}</text>
+          </view>
+          <view class='djjg_js'>
+            <text>{{item.showType}}</text>
+          </view>
+          <view class='djjg_xsbf'>
+            <text class='djjg_xs'>学时 : {{item.hours}}</text>
+            <text class='djjg_bfcs'>{{item.playnumber}}次播放</text>
+            <view class='xuank'>
+            <text class='xuanke' bindtap='xzkc' wx:if="{{item.isSign=='0'}}" data-index='{{index}}' data-id='{{item.id}}'>选课</text>
+            <text class='yixuan' data-index='{{index}}' data-id='{{item.id}}' bindtap='yixuankecheng' wx:if="{{item.isSign=='1'}}">已选</text>
+          </view>
+           
+                <block wx:if="{{item.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{item.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+          <view class='lfph_dw' catchtap='tzbfyemain' id='{{item.id}}' wx:if="{{item.isSign==0}}">
+                  <text class='sousuo_wxk'>未选课</text>
+                  <text>不记学时</text>
+               
+              </view>
+              <!-- <view wx:if="{{item.isSign==1}}">
+                <block wx:if="{{item.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{item.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+              </view> -->
+          </view>
+          
+        </view>
+      </view>
+      <view style='text-align:center' hidden='{{listAll.length>0}}'>
+        <text>未搜索到相关课程</text>
+      </view>
+      <!-- <view class='djjg_baogao' catchtap='tzbfyemain'>
+        <image class='djjg_img' src='/img/yiyuan.png'></image>
+        <view class='djjg_sm'>
+          <view class='djjg_bg'>
+            <text>十九大报告的萨芬撒地方阿斯蒂芬阿斯蒂芬啊</text>
+          </view>
+          <view class='djjg_js'>
+            <text>讲师 : 李浩师</text>
+          </view>
+          <view class='djjg_js'>
+            <text>必修/政策法规/视频</text>
+          </view>
+          <view class='djjg_xsbf'>
+            <text class='djjg_xs'>学时 : 1.2</text>
+            <text class='djjg_bfcs'>1025次播放</text>
+          </view>
+          <view class='xuank'>
+            <text class='xuanke' bindtap='xzkc' wx:if="{{xuankeShow}}">选课</text>
+            <text class='yixuan' bindtap='yiyuankecheng' wx:if="{{yixuanShow}}">已选</text>
+          </view>
+        </view>
+      </view> -->
+      <view class='xgzl'>
+        <text>相关资料</text>
+      </view>
+      <view class='xgzl_nr'>
+        <view class='djjg_baogao'  wx:for="{{relateList}}" wx:key="{{index}}" id='{{item.id}}'>
+          <image class='djjg_img' catchtap='tzbfyemain' id='{{item.id}}' src='{{item.thumbnail}}'></image>
+          <view class='djjg_sm'>
+            <view catchtap='tzbfyemain' id='{{item.id}}' class='xgzl_bg'>
+              <text>{{item.name}}</text>
+            </view>
+            <view class='xgzl_js'>
+              <text>讲师 : {{item.speaker}}</text>
+            </view>
+            <view class='xgzl_xs'>
+              <text style='width:80%;display:inline-block;'>学时 : {{item.hours}}</text>
+              <view class='xuank' >
+            <text class='xuanke' bindtap='xzkc' wx:if="{{item.isSign=='0'}}" data-index='{{index}}'data-xgzl='1' data-id='{{item.id}}'>选课</text>
+            <text class='yixuan' data-index='{{index}}' data-id='{{item.id}}' bindtap='yixuankecheng' data-xgzl='1' wx:if="{{item.isSign=='1'}}">已选</text>
+          </view>
+            </view>
+          </view>
+             <view class='lfph_dw' catchtap='tzbfyemain' id='{{item.id}}'  wx:if="{{item.isSign==0}}">
+                <view class='dwlfph_jianju'>
+                  <text>未选课</text>
+                </view>
+                <view>不记学时</view>
+                <block wx:if="{{item.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{item.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+              </view>
+              <view wx:if="{{item.isSign==1}}">
+                <block wx:if="{{item.isNew==1}}">
+                  <image src='/img/jiangzuo.png' wx:if="{{item.isZJJZ==1}}" class='new_dw'></image>
+                  <image src='/img/new.png' wx:else class='new_dw'></image>
+                </block>
+                <block wx:else>
+                  <image src='/img/jiangzuo.png' wx:if="{{course.isZJJZ==1}}" class='new_dw'></image>
+                </block>
+              </view>
+        </view>
+      <view class='dibu' wx:if='{{dibu}}'>
+        <image src='/img/jiazai.png' class="dibu_img"></image>
+        <text>火速加载中...</text>
+      </view>
+      </view>
+    </view>
+    <!-- 政策法规页面  完 -->
+  </view>
+  <!-- 点击搜索出来内容页索页  完 -->
+
+ <!-- 道德文化教育页面   -->
+      <view class='ddjy' wx:if="{{ddjy}}">道德文化教育页面</view>
+    <!-- 道德文化教育页面  完 -->
+
+    <!-- 思想健康教育教育页面 -->
+     <view class='sxjkjy' wx:if="{{sxjkjyym}}">思想健康教育教育页面</view>
+    <!--思想健康教育  完 -->
+
+</view>

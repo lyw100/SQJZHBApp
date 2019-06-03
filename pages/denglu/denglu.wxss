@@ -1,0 +1,59 @@
+page{
+  height: 98%;
+}
+.contai{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.user-header{
+  width: 150rpx;
+  height:150rpx;
+  margin-top: 40rpx;
+}
+.tit{
+  font-weight: bold;
+  margin-bottom: 100rpx;
+  font-size: 40rpx;
+}
+.zhanghao,
+.mimao{
+  width: 85%;
+  height: 80rpx;
+  border-bottom: 1px solid #ccc;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  margin-bottom: 30rpx;
+}
+.ipt{
+  display: inline-block;
+  /* width: 80%; */
+   height: 75rpx;
+  vertical-align: middle;
+  /* margin-left:20rpx; */
+}
+.anniu{
+  width:85%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.button-hover {
+  color:#fff;
+  background-color:#2499f9;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+}
+.btn_shualian{
+  color:#fff;
+  background-color:#2499f9;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+}
+.cuowu{
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  display: none;
+}

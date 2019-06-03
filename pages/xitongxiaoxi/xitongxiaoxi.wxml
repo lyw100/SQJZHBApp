@@ -1,0 +1,28 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class="nr">
+  <!-- <view wx:for="{{xxlist}}" wx:for-index="idx" wx:for-item="item">
+    <view class='xtxx'>
+      <view class='shijian'>
+        <text>{{item.audittime}}</text>
+      </view>
+      <view class='neirong'>
+        <text>{{item.content}}</text>
+      </view>
+    </view>
+  </view> -->
+  <view wx:for="{{list}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
+    <view class='xtxx'>
+      <view class='shijian'>
+        <text>{{item[0].audittime}}</text>
+      </view>
+      <view class='neirong'>
+        <template is="wxParse" data="{{wxParseData:item}}"/>
+      </view>
+    </view>
+  </view>
+  <!-- <view wx:key="{{item.id}}" wx:for="{{list}}">
+    <text >ID:{{item[0].id}</text>
+    <text >姓名：{{item[0].name}}</text>
+    <template is="wxParse" data="{{wxParseData:item}}"/>
+</view> -->
+</view>

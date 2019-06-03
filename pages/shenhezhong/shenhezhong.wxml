@@ -1,0 +1,58 @@
+<view class='shz' wx:if='{{shualiandl==false}}'>
+  <view class='shz_nr'>
+    <view class='shz_dz'>
+      <text>{{laborItem.labor.content}}</text>
+      <!-- 审核中 -->
+      <image src='/img/shz.png' class='shz_icon'  wx:if='{{laborItem.labor.status==0}}'></image>
+       <!-- 审核通过 -->
+      <image src='/img/shtg.png' class='shz_icon' wx:if='{{laborItem.labor.status==2}}'></image>
+       <!-- 审核未通过 -->
+      <image src='/img/shbtg.png' class='shz_icon' wx:if='{{laborItem.labor.status==1}}'></image>
+    </view>
+    <view class='sh_timt'>
+      <text>开始时间</text>
+      <text class='time_riqi'>{{laborItem.labor.startTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>结束时间</text>
+      <text class='time_riqi'>{{laborItem.labor.endTime}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>执行人</text>
+      <text class='time_riqi'>{{laborItem.person}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>开始劳动地点</text>
+      <text class='time_riqi'>{{laborItem.labor.startAddress}}</text>
+    </view>
+    <view class='sh_timt'>
+      <text>结束劳动地点</text>
+      <text class='time_riqi'>{{laborItem.labor.endAddress}}</text>
+    </view>
+  </view>
+  <!-- 审核未通过原因 -->
+  <view class='weitongguoyy' wx:if='{{laborItem.labor.status==1}}'>
+    <view ><text>审核未通过原因</text></view>
+    <view class='wtt_yuanyin'>
+      <text>{{laborItem.labor.suggestion}}</text>
+    </view>
+  </view>
+  <!-- 开始劳动灰色按钮  审核通过蓝色按钮 审核未通过没有按钮-->
+  <view class='anniu' wx:if='{{laborItem.labor.status!=2||kaishi==false}}'>
+    <text>开始劳动</text>
+  </view>
+  <view class='anniu2' wx:if='{{laborItem.labor.status==2&&kaishi==true}}' catchtap='tzldz'>
+    <text>开始劳动</text>
+  </view>
+  <!-- 刷脸登录 -->
+</view>
+
+<view class='nr' wx:if='{{shualiandl}}' >
+<camera device-position="{{device?'back':'front'}}" flash="off" binderror="error" style="width: 500rpx; height: 500rpx;">
+ <cover-image class="lefttop"  src="{{imgurl}}" />
+</camera> 
+  <view class="shebieziti">
+        <text>{{facemsg==''?'识别中请稍后....':facemsg}}</text>
+  </view>
+  
+</view>
