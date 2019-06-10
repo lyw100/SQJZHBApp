@@ -495,6 +495,9 @@ Page({
     let that = this;
     // console.log(this.data.record);
     let courseid = this.data.record.course.id;//课程id
+    if (this.data.sectionRecord == null || this.data.sectionRecord.section==null){
+      return false;
+    }
     let sectionid = this.data.sectionRecord.section.id;//课程章节id
     let progress = parseInt(this.data.progress);//进度
     let shualian="";
@@ -862,10 +865,18 @@ Page({
         }
         let filepath=res.data.section.filepath;
         if(filepath==""){
-          wx.showToast({
-            title: '视频源不存在，请选择其它视频',
-            icon: 'none',
-            duration: 2000
+          
+          wx.showModal({
+            title: '提示',
+            content: '视频源不存在，请选择其它视频',
+            showCancel: false,
+            success: function () {
+              //返回上一层页面
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+            
           })
           return false;
         }
