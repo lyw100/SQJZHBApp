@@ -860,6 +860,16 @@ Page({
           });
           return false;
         }
+        let filepath=res.data.section.filepath;
+        if(filepath==""){
+          wx.showToast({
+            title: '视频源不存在，请选择其它视频',
+            icon: 'none',
+            duration: 2000
+          })
+          return false;
+        }
+
         let progress = res.data.progress;
         let duration= res.data.section.duration;
         let shualian=res.data.shualian;
