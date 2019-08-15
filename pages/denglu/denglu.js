@@ -55,7 +55,7 @@ Page({
           wx.setStorageSync("password", pw)
           wx.setStorageSync("passwd", passwd)
           var jzid=res.data.jzid;
-            getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
+          getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
           //记录登录时间  更新模板消息发送数据
           wx.login({
             success(res1) {
@@ -83,9 +83,49 @@ Page({
             }
           })
           
-          wx.navigateTo({
-            url: '../shualiandenglu/shualiandenglu',
+          // wx.navigateTo({
+          //   url: '../shualiandenglu/shualiandenglu',
+          // })
+
+          //this.setData({ logindisabled: true });
+          wx.startFacialRecognitionVerify({
+            name: res.data.name,
+            idCardNumber: res.data.idCard,
+            checkAliveType:'2',
+            success(){
+              //刷脸成功回调 设置session 在线人数 日志
+              wx.request({
+                url: getApp().globalData.url + '/wechat/user/wxFace',
+                data: {
+                  telephone: wx.getStorageSync("username"),
+                  password: wx.getStorageSync("password")
+                },
+                method: "POST",
+                header: {
+                  'Cookie': getApp().globalData.header.Cookie, //获取app.js中的请求头
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success(res2) {
+                  var data = JSON.parse(res2.data);
+                  if (data.msg == "OK") {
+                    getApp().globalData.jiaozhengid = data.jzid;
+                    wx.switchTab({
+                      url: '../zhuye/zhuye',
+                    })
+                  }
+                }
+              })
+
+            },
+            fail(res){
+              //
+              const verifyResult = res.verifyResult
+              console.log(verifyResult)
+            }
           })
+
+
+
         } else if (res.data.msg == "isLogin"){
           wx.showModal({
             title: '提示',
@@ -127,8 +167,45 @@ Page({
                   }
                 })
 
-                wx.navigateTo({
-                  url: '../shualiandenglu/shualiandenglu',
+                // wx.navigateTo({
+                //   url: '../shualiandenglu/shualiandenglu',
+                // })
+
+                //this.setData({ logindisabled: true });
+                wx.startFacialRecognitionVerify({
+                  name: res.data.name,
+                  idCardNumber: res.data.idCard,
+                  checkAliveType: '2',
+                  success() {
+                    //刷脸成功回调 设置session 在线人数 日志
+                    wx.request({
+                      url: getApp().globalData.url + '/wechat/user/wxFace',
+                      data: {
+                        telephone: wx.getStorageSync("username"),
+                        password: wx.getStorageSync("password")
+                      },
+                      method: "POST",
+                      header: {
+                        'Cookie': getApp().globalData.header.Cookie, //获取app.js中的请求头
+                        'content-type': 'application/x-www-form-urlencoded'
+                      },
+                      success(res2) {
+                        var data = JSON.parse(res2.data);
+                        if (data.msg == "OK") {
+                          getApp().globalData.jiaozhengid = data.jzid;
+                          wx.switchTab({
+                            url: '../zhuye/zhuye',
+                          })
+                        }
+                      }
+                    })
+
+                  },
+                  fail(res) {
+                    //
+                    const verifyResult = res.verifyResult
+                    console.log(verifyResult)
+                  }
                 })
 
               } else if (sm.cancel) {

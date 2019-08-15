@@ -8,6 +8,24 @@ Page({
    
   },
   onTap: function () {
+    // wx.startFacialRecognitionVerify({
+    //   name:'王华',
+    //   idCardNumber:'131182199003292012',
+    //   checkAliveType:'2',
+    //   success(){
+    //     wx.navigateTo({
+    //       url: '../denglu/denglu',
+    //     });
+    //   },
+    //   fail(res){
+    //     //
+    //     const verifyResult = res.verifyResult
+    //     console.log(verifyResult)
+    //   }
+    // })
+
+
+
     wx.navigateTo({
         url: '../denglu/denglu',
       });
